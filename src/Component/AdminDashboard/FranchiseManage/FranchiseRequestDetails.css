@@ -1,0 +1,832 @@
+/* ========================================
+   FRANCHISE REQUEST DETAILS - PROFESSIONAL
+   EduSkillVision © 2025
+   Single Page Professional View
+   Mobile | Tablet | Laptop | Desktop | 4K
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.frd-container {
+  padding: 16px 20px;
+  background: #f8fafc;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+  padding-bottom: 90px; /* Space for fixed action bar */
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.frd-header {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eef2f6;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.frd-back-btn {
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  height: 38px;
+  flex-shrink: 0;
+}
+
+.frd-back-btn:hover {
+  background: #4f46e5;
+  color: #ffffff;
+  border-color: #4f46e5;
+  transform: translateX(-3px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.frd-header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.frd-header-title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 6px;
+}
+
+.frd-page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.frd-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.frd-meta-item {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.frd-meta-item strong {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+.frd-meta-divider {
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+/* ============================================
+   STATUS BADGE
+   ============================================ */
+.frd-status-badge {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.frd-status-badge.frd-pending  { background: #fef3c7; color: #92400e; }
+.frd-status-badge.frd-approved { background: #d1fae5; color: #065f46; }
+.frd-status-badge.frd-rejected { background: #fee2e2; color: #991b1b; }
+
+/* ============================================
+   PROFILE CARD
+   ============================================ */
+.frd-profile-card {
+  background: linear-gradient(135deg, #0d1e3d 0%, #1a2f5a 100%);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(13, 30, 61, 0.2);
+}
+
+.frd-profile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.frd-profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #d4af37, #f5c96a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0d1e3d;
+  flex-shrink: 0;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.frd-profile-info {
+  flex: 1;
+  min-width: 0;
+  z-index: 1;
+}
+
+.frd-profile-name {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  word-break: break-word;
+}
+
+.frd-profile-subtitle {
+  font-size: 13px;
+  color: #d4af37;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+}
+
+.frd-profile-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.frd-contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.25s;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.frd-contact-chip:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+/* ============================================
+   MAIN GRID
+   ============================================ */
+.frd-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.frd-left-column,
+.frd-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ============================================
+   SECTION CARDS
+   ============================================ */
+.frd-section {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eef2f6;
+  transition: all 0.25s;
+}
+
+.frd-section:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.frd-section-highlight {
+  background: linear-gradient(135deg, #fef3c7 0%, #fef9e7 100%);
+  border-color: #f59e0b;
+}
+
+.frd-section-header {
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #eef2f6;
+}
+
+.frd-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.frd-section-icon {
+  font-size: 18px;
+}
+
+/* ============================================
+   INFO GRID
+   ============================================ */
+.frd-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+}
+
+.frd-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.frd-info-item.frd-full-width {
+  grid-column: 1 / -1;
+}
+
+.frd-info-item label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.frd-info-item span {
+  font-size: 14px;
+  color: #0f172a;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.frd-info-item span.frd-email {
+  color: #4f46e5;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+/* ============================================
+   FRANCHISE BOX
+   ============================================ */
+.frd-franchise-box {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.frd-franchise-box label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.frd-franchise-name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #0d1e3d;
+  margin: 0;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* ============================================
+   STATUS BOX
+   ============================================ */
+.frd-status-box {
+  text-align: center;
+  padding: 14px 0;
+}
+
+.frd-status-icon-big {
+  font-size: 44px;
+  margin-bottom: 8px;
+}
+
+.frd-status-text {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.frd-status-text.frd-pending  { color: #d97706; }
+.frd-status-text.frd-approved { color: #059669; }
+.frd-status-text.frd-rejected { color: #dc2626; }
+
+.frd-status-desc {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+/* ============================================
+   MESSAGE BOX
+   ============================================ */
+.frd-message-box {
+  background: #f8fafc;
+  border-left: 4px solid #4f46e5;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* ============================================
+   ADMIN NOTES
+   ============================================ */
+.frd-admin-notes {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0f172a;
+  transition: all 0.25s;
+  resize: vertical;
+  min-height: 90px;
+  background: #f8fafc;
+}
+
+.frd-admin-notes:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.08);
+  background: #ffffff;
+}
+
+.frd-admin-notes:disabled {
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: not-allowed;
+}
+
+.frd-notes-info {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+/* ============================================
+   ACTION BAR (Fixed Bottom)
+   ============================================ */
+.frd-action-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 12px 24px;
+  border-top: 2px solid #eef2f6;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 100;
+  flex-wrap: wrap;
+}
+
+.frd-btn {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 42px;
+  white-space: nowrap;
+}
+
+.frd-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.frd-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.frd-btn-primary {
+  background: #4f46e5;
+  color: #ffffff;
+}
+.frd-btn-primary:hover:not(:disabled) { background: #4338ca; }
+
+.frd-btn-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #ffffff;
+}
+.frd-btn-success:hover:not(:disabled) {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+.frd-btn-danger {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+}
+.frd-btn-danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+.frd-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+.frd-btn-secondary:hover:not(:disabled) {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+}
+
+.frd-resolved-info {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #f1f5f9;
+  border-radius: 8px;
+}
+
+.frd-resolved-info strong {
+  color: #0f172a;
+  text-transform: capitalize;
+}
+
+/* ============================================
+   LOADING & NOT FOUND
+   ============================================ */
+.frd-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 16px;
+  background: #f8fafc;
+}
+
+.frd-loading-container p {
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.frd-spinner {
+  width: 44px;
+  height: 44px;
+  border: 4px solid #e2e8f0;
+  border-top-color: #4f46e5;
+  border-radius: 50%;
+  animation: frdSpin 0.8s linear infinite;
+}
+
+@keyframes frdSpin {
+  to { transform: rotate(360deg); }
+}
+
+.frd-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #f8fafc;
+}
+
+.frd-not-found-content {
+  text-align: center;
+  background: #ffffff;
+  padding: 40px 50px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #eef2f6;
+  max-width: 400px;
+}
+
+.frd-not-found-icon {
+  font-size: 60px;
+  margin-bottom: 16px;
+}
+
+.frd-not-found-content h2 {
+  font-size: 24px;
+  color: #0f172a;
+  margin-bottom: 10px;
+}
+
+.frd-not-found-content p {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE - 4K / LARGE DESKTOP (1600px+)
+   ============================================ */
+@media screen and (min-width: 1600px) {
+  .frd-container { padding: 24px 30px; padding-bottom: 100px; }
+  .frd-page-title { font-size: 24px; }
+  .frd-profile-name { font-size: 26px; }
+  .frd-profile-avatar { width: 80px; height: 80px; font-size: 36px; }
+  .frd-info-item span { font-size: 15px; }
+  .frd-franchise-name { font-size: 26px; }
+}
+
+/* ============================================
+   LAPTOP (1024px - 1599px)
+   ============================================ */
+@media screen and (min-width: 1024px) and (max-width: 1599px) {
+  .frd-main-grid {
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* ============================================
+   TABLET (768px - 1023px)
+   ============================================ */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .frd-container { padding: 14px 16px; padding-bottom: 90px; }
+  
+  .frd-main-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  
+  .frd-right-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  
+  .frd-right-column > .frd-section:last-child {
+    grid-column: 1 / -1;
+  }
+  
+  .frd-info-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .frd-page-title { font-size: 18px; }
+  .frd-profile-name { font-size: 20px; }
+  .frd-franchise-name { font-size: 20px; }
+}
+
+/* ============================================
+   MOBILE (max 767px)
+   ============================================ */
+@media screen and (max-width: 767px) {
+  .frd-container {
+    padding: 10px 12px;
+    padding-bottom: 100px;
+  }
+  
+  /* Header */
+  .frd-header {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  
+  .frd-back-btn {
+    align-self: flex-start;
+    height: 36px;
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+  
+  .frd-header-title-row {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .frd-page-title { font-size: 17px; }
+  
+  .frd-status-badge {
+    font-size: 10px;
+    padding: 4px 12px;
+  }
+  
+  .frd-meta-item { font-size: 12px; }
+  
+  /* Profile Card */
+  .frd-profile-card {
+    padding: 16px;
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  
+  .frd-profile-avatar {
+    width: 65px;
+    height: 65px;
+    font-size: 28px;
+  }
+  
+  .frd-profile-name { font-size: 19px; }
+  .frd-profile-subtitle { font-size: 12px; }
+  
+  .frd-profile-contacts {
+    justify-content: center;
+  }
+  
+  .frd-contact-chip {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+  
+  /* Grid */
+  .frd-main-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .frd-section {
+    padding: 14px 16px;
+  }
+  
+  .frd-section-title {
+    font-size: 13px;
+  }
+  
+  .frd-section-icon {
+    font-size: 16px;
+  }
+  
+  .frd-info-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .frd-info-item label { font-size: 10px; }
+  .frd-info-item span { font-size: 13px; }
+  
+  .frd-franchise-name { font-size: 18px; }
+  .frd-status-text { font-size: 18px; }
+  .frd-status-icon-big { font-size: 38px; }
+  
+  .frd-message-box {
+    font-size: 13px;
+    padding: 12px 14px;
+  }
+  
+  .frd-admin-notes {
+    font-size: 12px;
+    min-height: 80px;
+    padding: 10px 12px;
+  }
+  
+  /* Action Bar */
+  .frd-action-bar {
+    padding: 10px 12px;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .frd-btn {
+    flex: 1;
+    min-width: 90px;
+    padding: 8px 12px;
+    font-size: 12px;
+    height: 40px;
+    justify-content: center;
+  }
+  
+  .frd-resolved-info {
+    flex: 1;
+    justify-content: center;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+/* ============================================
+   SMALL MOBILE (max 480px)
+   ============================================ */
+@media screen and (max-width: 480px) {
+  .frd-container { padding: 8px; padding-bottom: 100px; }
+  
+  .frd-header { padding: 10px 12px; }
+  .frd-page-title { font-size: 15px; }
+  
+  .frd-profile-card { padding: 14px 12px; }
+  .frd-profile-avatar { width: 60px; height: 60px; font-size: 26px; }
+  .frd-profile-name { font-size: 17px; }
+  
+  .frd-section { padding: 12px 14px; }
+  .frd-section-title { font-size: 12px; }
+  
+  .frd-info-item span { font-size: 12px; }
+  .frd-franchise-name { font-size: 17px; }
+  
+  .frd-message-box { font-size: 12px; padding: 10px 12px; }
+  
+  .frd-btn {
+    font-size: 11px;
+    padding: 6px 10px;
+    height: 36px;
+  }
+  
+  .frd-action-bar { padding: 8px 10px; }
+}
+
+/* ============================================
+   EXTRA SMALL (max 360px)
+   ============================================ */
+@media screen and (max-width: 360px) {
+  .frd-container { padding: 6px; padding-bottom: 100px; }
+  
+  .frd-page-title { font-size: 14px; }
+  .frd-profile-avatar { width: 55px; height: 55px; font-size: 22px; }
+  .frd-profile-name { font-size: 15px; }
+  
+  .frd-section { padding: 10px 12px; }
+  .frd-info-item span { font-size: 11px; }
+  .frd-franchise-name { font-size: 15px; }
+  
+  .frd-btn { font-size: 10px; padding: 5px 8px; height: 34px; }
+  .frd-btn:first-child { min-width: 70px; }
+}
+
+/* ============================================
+   DARK MODE - FORCE LIGHT
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  .frd-container { background: #f8fafc !important; }
+  .frd-header,
+  .frd-section { background: #ffffff !important; border-color: #eef2f6 !important; }
+  .frd-page-title,
+  .frd-section-title,
+  .frd-info-item span { color: #0f172a !important; }
+  .frd-info-item label { color: #94a3b8 !important; }
+  .frd-admin-notes { background: #f8fafc !important; border-color: #e2e8f0 !important; color: #0f172a !important; }
+  .frd-message-box { background: #f8fafc !important; color: #334155 !important; }
+  .frd-action-bar { background: #ffffff !important; border-color: #eef2f6 !important; }
+}

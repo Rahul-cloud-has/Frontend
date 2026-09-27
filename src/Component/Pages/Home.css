@@ -1,0 +1,308 @@
+/* ====================================================
+   ROOT VARIABLES 
+==================================================== */
+:root {
+  --navy-bg: #0A1128;
+  --navy-card: rgba(16, 25, 53, 0.7);
+  --gold: #FFB703;
+  --gold-glow: rgba(255, 183, 3, 0.3);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 183, 3, 0.5);
+  --text-white: #ffffff;
+  --text-gray: #94a3b8;
+}
+
+/* 
+  FIX: Removed overflow:hidden from main wrapper.
+  This ensures page scrolls naturally and cards don't clip at the bottom.
+*/
+.home-premium-master {
+  background-color: var(--navy-bg);
+  color: var(--text-white);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Added extra padding bottom so CTA doesn't stick to Footer */
+.section-spacing { padding: 90px 0; }
+.mt-4 { margin-top: 24px; }
+.mt-5 { margin-top: 40px; }
+.text-center { text-align: center; }
+
+/* Grid Background */
+.pro-bg-grid {
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0; opacity: 0.5; pointer-events: none;
+}
+
+/* ====================================================
+   SCROLL REVEAL ANIMATIONS
+==================================================== */
+.reveal {
+  opacity: 0; transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ====================================================
+   TYPOGRAPHY & BUTTONS
+==================================================== */
+.gold-text { color: var(--gold); text-shadow: 0 0 15px var(--gold-glow); }
+
+.pro-tag {
+  display: inline-block; padding: 6px 20px;
+  background: rgba(255, 183, 3, 0.1); border: 1px solid var(--gold-glow);
+  color: var(--gold); border-radius: 30px;
+  font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 15px; box-shadow: 0 0 15px rgba(255,183,3,0.1);
+}
+
+.pro-heading h2 { font-size: 40px; font-weight: 800; margin-bottom: 15px; }
+.pro-heading p { font-size: 16px; color: var(--text-gray); max-width: 600px; margin: 0 auto 40px; }
+
+/* Global Buttons */
+.pro-btn-gold {
+  background: linear-gradient(135deg, var(--gold), #ffa000);
+  color: var(--navy-bg); padding: 14px 34px; border-radius: 50px;
+  font-weight: 800; font-size: 15px; text-decoration: none;
+  display: inline-block; transition: all 0.3s;
+  box-shadow: 0 4px 15px var(--gold-glow);
+}
+.pro-btn-gold:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.5); color: var(--navy-bg);
+}
+
+.pro-btn-glass {
+  background: rgba(255,255,255,0.05); border: 1px solid var(--border-light);
+  backdrop-filter: blur(10px); color: var(--text-white);
+  padding: 14px 34px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s;
+}
+.pro-btn-glass:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); }
+.pro-btn-glass.outline { border-color: var(--gold); color: var(--gold); }
+.pro-btn-glass.outline:hover { background: var(--gold); color: var(--navy-bg); box-shadow: 0 0 20px var(--gold-glow);}
+
+/* ====================================================
+   HERO SECTION
+==================================================== */
+.pro-hero { position: relative; height: 85vh; min-height: 550px; z-index: 2; overflow: hidden; }
+.pro-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
+.pro-slide.active { opacity: 1; z-index: 1; }
+
+.pro-bg-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); transition: transform 5s linear; }
+.pro-slide.active .pro-bg-img { transform: scale(1); }
+.pro-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,17,40,0.6), var(--navy-bg)); }
+
+.pro-hero-content {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 100%; max-width: 800px; z-index: 2; text-align: center;
+}
+.pro-badge {
+  background: rgba(255,183,3,0.15); border: 1px solid var(--gold); color: var(--gold);
+  padding: 6px 20px; border-radius: 30px; font-size: 13px; font-weight: 700; margin-bottom: 20px; display: inline-block;
+}
+.pro-hero-content h1 { font-size: 58px; font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
+.pro-hero-content h3 { font-size: 24px; color: var(--gold); margin-bottom: 15px; font-weight: 500;}
+.pro-hero-content p { font-size: 17px; color: #cbd5e1; margin-bottom: 35px; }
+.pro-buttons { display: flex; gap: 20px; justify-content: center; }
+
+/* ====================================================
+   STATS 
+==================================================== */
+.pro-stats { position: relative; z-index: 10; margin-top: -60px; padding-bottom: 40px; }
+.stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 15px; }
+.pro-stat-card {
+  background: var(--navy-card); backdrop-filter: blur(15px); border: 1px solid var(--border-light);
+  padding: 25px 15px; border-radius: 16px; text-align: center;
+  transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+.pro-stat-card:hover { transform: translateY(-10px); border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow); }
+.stat-icon { font-size: 30px; margin-bottom: 8px; }
+.stat-value-box { color: var(--gold); font-size: 32px; font-weight: 900; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; }
+.stat-number, .stat-suffix { color: var(--gold); font-weight: 900; }
+.stat-label { color: var(--text-gray); font-size: 12px; font-weight: 600; text-transform: uppercase; margin: 0;}
+
+/* ====================================================
+   LEARNING PATH
+==================================================== */
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; position: relative; margin-top: 40px;}
+.steps-grid::before {
+  content: ''; position: absolute; top: 35px; left: 10%; right: 10%;
+  height: 2px; background: dashed 2px var(--border-light); z-index: 0;
+}
+.step-card {
+  background: var(--navy-card); border: 1px solid var(--border-light);
+  padding: 30px 20px; border-radius: 16px; text-align: center; position: relative; z-index: 1; transition: 0.3s;
+}
+.step-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 10px 25px var(--gold-glow); }
+.step-number {
+  width: 70px; height: 70px; background: var(--navy-bg); border: 2px solid var(--gold);
+  color: var(--gold); font-size: 24px; font-weight: 900; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+.step-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #fff; }
+.step-card p { font-size: 13px; color: var(--text-gray); line-height: 1.5; margin: 0;}
+
+/* ====================================================
+   COURSES (COMPACT HEIGHT FIX)
+==================================================== */
+.pro-search { max-width: 600px; margin: 0 auto 50px; position: relative; }
+.pro-search span { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); }
+.pro-search input {
+  width: 100%; background: rgba(0,0,0,0.4); border: 1px solid var(--border-light);
+  color: #fff; padding: 14px 20px 14px 50px; border-radius: 50px;
+  font-size: 15px; outline: none; transition: 0.3s;
+}
+.pro-search input:focus { border-color: var(--gold); box-shadow: 0 0 20px var(--gold-glow); }
+
+.courses-grid-exact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+
+.pro-course-card {
+  background: var(--navy-card); border: 1px solid var(--border-light);
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.pro-course-card:hover {
+  transform: translateY(-8px); border-color: var(--border-hover);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 15px var(--gold-glow);
+}
+
+/* FIX: Reduced Image Height to 140px for compact look */
+.card-image { height: 140px; position: relative; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.pro-course-card:hover .card-image img { transform: scale(1.1); }
+
+.badges { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; }
+.badge-cat { background: rgba(10,17,40,0.9); color: var(--gold); border: 1px solid var(--gold); padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; }
+.badge-pro { background: var(--gold); color: var(--navy-bg); padding: 3px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; }
+
+.card-content { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; }
+.card-content h3 { font-size: 16px; font-weight: 800; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #fff;}
+.card-content p { font-size: 12px; color: var(--text-gray); margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.4; }
+
+.card-meta {
+  display: flex; justify-content: space-between; font-size: 11px; color: #cbd5e1; font-weight: 600;
+  padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 12px;
+}
+
+.card-footer { text-align: right; margin-top: auto; }
+.btn-enroll {
+  background: transparent; color: var(--gold); border: 1px solid var(--gold);
+  padding: 6px 18px; border-radius: 30px; font-size: 11px; font-weight: 700;
+  text-decoration: none; transition: 0.3s; display: inline-block;
+}
+.pro-course-card:hover .btn-enroll { background: var(--gold); color: var(--navy-bg); box-shadow: 0 0 10px var(--gold-glow); }
+
+/* ====================================================
+   FRANCHISE BANNER
+==================================================== */
+.franchise-box {
+  background: linear-gradient(135deg, rgba(22, 36, 71, 0.6), rgba(10, 17, 40, 0.9));
+  border: 1px solid var(--border-light); border-left: 4px solid var(--gold);
+  border-radius: 20px; padding: 40px; display: flex; align-items: center; gap: 40px;
+}
+.franchise-text { flex: 1; }
+.franchise-text h2 { font-size: 32px; font-weight: 800; margin-bottom: 15px; }
+.franchise-text p { font-size: 15px; color: var(--text-gray); margin-bottom: 20px; line-height: 1.6;}
+.franchise-text ul { list-style: none; padding: 0; margin-bottom: 20px; }
+.franchise-text ul li { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #fff; }
+.franchise-image { flex: 0.8; }
+.franchise-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+
+/* ====================================================
+   ADVANTAGES
+==================================================== */
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;}
+.pro-feature-card {
+  background: var(--navy-card); border: 1px solid var(--border-light);
+  padding: 30px 25px; border-radius: 16px; text-align: center; position: relative; overflow: hidden; transition: 0.3s;
+}
+.pro-feature-card:hover { transform: translateY(-8px); border-color: var(--border-hover); box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
+.hover-glow { position: absolute; width: 100px; height: 100px; background: var(--gold); filter: blur(60px); top: -30px; right: -30px; opacity: 0; transition: 0.5s; z-index: 0; }
+.pro-feature-card:hover .hover-glow { opacity: 0.15; }
+.pro-feature-card .icon { font-size: 40px; margin-bottom: 15px; position: relative; z-index: 1; transition: 0.3s; }
+.pro-feature-card:hover .icon { transform: scale(1.1); }
+.pro-feature-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px; position: relative; z-index: 1; color: #fff;}
+.pro-feature-card p { font-size: 13px; color: var(--text-gray); line-height: 1.5; position: relative; z-index: 1; margin: 0;}
+
+/* ====================================================
+   MARQUEE (FIXED CLIPPING ISSUE)
+==================================================== */
+.pro-marquee { 
+  padding: 50px 0; /* Increased padding top/bottom so cards don't clip */
+  background: rgba(0,0,0,0.3); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); 
+}
+.pro-marquee h4 { color: var(--text-gray); font-size: 13px; letter-spacing: 3px; margin-bottom: 30px; }
+
+/* FIX: Added generous padding inside wrapper so translateY doesn't cut */
+.marquee-wrapper { width: 100%; overflow: hidden; white-space: nowrap; padding: 20px 0; }
+.marquee-track { display: flex; gap: 30px; width: fit-content; animation: marqueeAnim 30s linear infinite; }
+
+.recruiter-card {
+  background: var(--navy-card); border: 1px solid var(--border-light);
+  padding: 15px 35px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 200px; cursor: pointer; transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.recruiter-card:hover {
+  transform: translateY(-8px); border-color: var(--gold); background: rgba(255,183,3,0.05);
+  box-shadow: 0 10px 25px var(--gold-glow);
+}
+.r-name { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 4px; transition: 0.3s;}
+.recruiter-card:hover .r-name { color: var(--gold); }
+.r-role { font-size: 12px; color: var(--text-gray); text-transform: uppercase; letter-spacing: 1px; }
+
+.marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
+
+@keyframes marqueeAnim { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* ====================================================
+   CTA
+==================================================== */
+.pro-cta { padding-bottom: 120px; } /* Ensures big space before Footer */
+.cta-box {
+  background: linear-gradient(135deg, rgba(22,36,71,0.6), rgba(10,17,40,0.9));
+  border: 1px solid var(--border-light); border-radius: 20px; padding: 60px 40px;
+  text-align: center; position: relative; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+.cta-bg-glow { position: absolute; width: 250px; height: 250px; background: var(--gold); filter: blur(100px); top: 50%; left: 50%; transform: translate(-50%, -50%); opacity: 0.1; z-index: 0; pointer-events: none;}
+.cta-box h2, .cta-box p, .cta-buttons { position: relative; z-index: 1; }
+.cta-box h2 { font-size: 34px; font-weight: 900; margin-bottom: 12px; }
+.cta-box p { font-size: 16px; color: var(--text-gray); margin-bottom: 30px; }
+.cta-buttons { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+
+.spinner { width: 40px; height: 40px; border: 3px solid var(--border-light); border-top-color: var(--gold); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* ====================================================
+   RESPONSIVE
+==================================================== */
+@media (max-width: 1200px) {
+  .courses-grid-exact { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 15px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  .steps-grid::before { display: none; }
+}
+
+@media (max-width: 992px) {
+  .pro-hero-content h1 { font-size: 42px; }
+  .franchise-box { flex-direction: column; text-align: center; padding: 30px 20px; }
+  .franchise-text ul li { display: inline-block; margin: 0 10px 10px; }
+}
+
+@media (max-width: 600px) {
+  .pro-hero-content h1 { font-size: 32px; }
+  .pro-buttons { flex-direction: column; padding: 0 20px;}
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .courses-grid-exact { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .cta-box { padding: 40px 20px; }
+  .cta-box h2 { font-size: 24px; }
+}

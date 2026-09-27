@@ -1,0 +1,1543 @@
+/* FranchiseUserManagement.css - FINAL Complete Version */
+
+/* ============================================
+   📦 CONTAINER
+   ============================================ */
+.fum-container {
+  padding: 16px 20px;
+  max-width: 1440px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+/* ============================================
+   🍞 TOAST NOTIFICATIONS
+   ============================================ */
+.fum-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  font-size: 13px;
+  z-index: 99999;
+  animation: fumSlideIn 0.3s ease, fumFadeOut 0.3s ease 2.8s forwards;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 360px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fum-toast-success { background: linear-gradient(135deg, #10b981, #059669); }
+.fum-toast-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+.fum-toast-info { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.fum-toast-warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+@keyframes fumSlideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fumFadeOut {
+  to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* ============================================
+   📋 HEADER
+   ============================================ */
+.fum-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fum-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.fum-subtitle {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 2px 0 0 0;
+}
+
+/* ============================================
+   🔘 BUTTONS
+   ============================================ */
+.fum-btn-primary {
+  background: linear-gradient(135deg, #7ac58a, #1fe94b);
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  white-space: nowrap;
+}
+
+.fum-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.fum-btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* ============================================
+   📊 STATS CARDS
+   ============================================ */
+.fum-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+}
+
+.fum-stat {
+  background: white;
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease;
+}
+
+.fum-stat:hover {
+  border-color: #8b5cf6;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.08);
+}
+
+.fum-stat-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2a5e;
+  display: block;
+  line-height: 1.2;
+}
+
+.fum-stat-label {
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px;
+}
+
+/* ============================================
+   🔍 SEARCH
+   ============================================ */
+.fum-search-wrapper {
+  margin-bottom: 14px;
+}
+
+.fum-search {
+  width: 100%;
+  padding: 10px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: all 0.25s ease;
+  background: white;
+  outline: none;
+}
+
+.fum-search:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.fum-search::placeholder {
+  color: #9ca3af;
+}
+
+/* ============================================
+   📋 TABLE - COMPACT + STICKY HEADER
+   ============================================ */
+.fum-table-wrapper {
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.fum-table-scroll {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 550px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  position: relative;
+}
+
+.fum-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+  min-width: 900px;
+}
+
+/* ✅ STICKY HEADER */
+.fum-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.fum-table thead th {
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  color: #374151;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  background: #f1f5f9;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ✅ COMPACT ROWS */
+.fum-table tbody td {
+  padding: 5px 10px;
+  border-bottom: 1px solid #f1f3f5;
+  color: #1f2937;
+  vertical-align: middle;
+  background: white;
+  height: 32px;
+  font-size: 12px;
+}
+
+.fum-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.fum-table tbody tr:hover td {
+  background: #fafbff;
+}
+
+.fum-table tbody tr:nth-child(even) td {
+  background: #fafbfc;
+}
+
+.fum-table tbody tr:nth-child(even):hover td {
+  background: #f3f4f6;
+}
+
+.fum-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ✅ PLAIN TEXT COLUMNS - Full Name Display - BOLD */
+.fum-text-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1a2a5e;
+  text-transform: capitalize;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fum-text-email {
+  font-size: 12px;
+  color: #374151;
+  white-space: nowrap;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fum-text-mobile {
+  font-size: 12px;
+  color: #1f2937;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.fum-text-date {
+  font-size: 11px;
+  color: #6b7280;
+  white-space: nowrap;
+}
+
+.fum-code {
+  font-family: 'SF Mono', 'Courier New', monospace;
+  font-size: 12px;
+  background: #f3f4f6;
+  padding: 3px 10px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 700;
+  white-space: nowrap;
+  color: #0f172a;
+}
+
+.fum-code-highlight {
+  color: #7c3aed;
+  background: #ede9fe;
+  font-weight: 700;
+}
+/* ============================================
+   🏷️ STATUS BADGE
+   ============================================ */
+.fum-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 10px;
+  border-radius: 50px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.fum-status.active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.fum-status.inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ============================================
+   🔐 PERMISSION BUTTON
+   ============================================ */
+.fum-btn-permission {
+  background: #f3f4f6;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #374151;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+}
+
+.fum-btn-permission:hover {
+  background: #8b5cf6;
+  color: white;
+}
+
+/* ============================================
+   ✏️ ACTION BUTTONS
+   ============================================ */
+.fum-actions {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.fum-btn-edit,
+.fum-btn-delete {
+  border: none;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  line-height: 1;
+}
+
+.fum-btn-edit:hover {
+  background: #ede9fe;
+  transform: scale(1.15);
+}
+
+.fum-btn-delete:hover {
+  background: #fee2e2;
+  transform: scale(1.15);
+}
+
+/* ============================================
+   📄 PAGINATION
+   ============================================ */
+.fum-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 14px;
+  border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #fafbfc;
+}
+
+.fum-pagination-info {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.fum-pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.fum-pagination-select {
+  padding: 4px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 11px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.fum-pagination-buttons {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.fum-pagination-btn {
+  padding: 4px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s ease;
+  color: #374151;
+  min-width: 32px;
+  text-align: center;
+}
+
+.fum-pagination-btn:hover:not(:disabled) {
+  background: #ede9fe;
+  border-color: #8b5cf6;
+  color: #7c3aed;
+}
+
+.fum-pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fum-pagination-current {
+  padding: 4px 12px;
+  font-weight: 600;
+  color: #7c3aed;
+  font-size: 12px;
+  background: #ede9fe;
+  border-radius: 4px;
+}
+
+/* ============================================
+   📭 NO DATA
+   ============================================ */
+.fum-no-data {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6b7280;
+}
+
+.fum-no-data span {
+  font-size: 36px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fum-no-data p {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ============================================
+   🧩 SKELETON LOADER
+   ============================================ */
+.fum-skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.fum-skeleton-title {
+  width: 200px;
+  height: 24px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: fumSkeletonShimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+.fum-skeleton-button {
+  width: 100px;
+  height: 32px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: fumSkeletonShimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.fum-skeleton-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.fum-skeleton-stat {
+  height: 50px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: fumSkeletonShimmer 1.5s infinite;
+  border-radius: 8px;
+}
+
+.fum-skeleton-search {
+  height: 42px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: fumSkeletonShimmer 1.5s infinite;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.fum-skeleton-table {
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.fum-skeleton-row {
+  height: 32px;
+  background: linear-gradient(90deg, #f8f8f8 25%, #f0f0f0 50%, #f8f8f8 75%);
+  background-size: 200% 100%;
+  animation: fumSkeletonShimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+@keyframes fumSkeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   🎨 MODAL
+   ============================================ */
+.fum-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fumModalFadeIn 0.25s ease;
+  padding: 16px;
+}
+
+@keyframes fumModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fum-modal {
+  background: white;
+  border-radius: 12px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+  animation: fumModalSlideUp 0.3s ease;
+}
+
+@keyframes fumModalSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.fum-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 10;
+  border-radius: 12px 12px 0 0;
+}
+
+.fum-modal-header h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+}
+
+.fum-modal-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  padding: 2px 8px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.fum-modal-close:hover {
+  background: #f3f4f6;
+  color: #1a2a5e;
+}
+
+.fum-modal-body {
+  padding: 16px 20px;
+}
+
+.fum-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #fafbfc;
+  border-radius: 0 0 12px 12px;
+  flex-wrap: wrap;
+}
+
+/* ============================================
+   📝 FORM
+   ============================================ */
+.fum-modal-form > .fum-form-group,
+.fum-modal-form > .fum-form-grid,
+.fum-modal-form > .fum-permissions-section {
+  padding: 0 20px;
+}
+
+.fum-modal-form > .fum-form-group:first-child {
+  padding-top: 16px;
+}
+
+.fum-form-group {
+  margin-bottom: 14px;
+}
+
+.fum-form-group label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+}
+
+.fum-form-group input,
+.fum-form-group select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  background: white;
+  outline: none;
+  font-family: inherit;
+  height: 40px;
+}
+
+.fum-form-group input:focus,
+.fum-form-group select:focus {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.fum-form-group input.fum-readonly {
+  background: #f8fafc;
+  color: #374151;
+  cursor: default;
+  border-color: #e5e7eb;
+}
+
+.fum-form-group input.fum-editable {
+  border-color: #8b5cf6;
+}
+
+/* ============================================
+   🔐 PASSWORD FIELD WITH TOGGLE ✅
+   ============================================ */
+.fum-password-field {
+  position: relative;
+  width: 100%;
+}
+
+.fum-password-field input {
+  width: 100%;
+  padding: 8px 90px 8px 12px !important;
+  border: 2px solid #8b5cf6;
+  border-radius: 6px;
+  font-size: 13px;
+  height: 40px;
+  outline: none;
+  background: white;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.fum-password-field input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.12);
+}
+
+.fum-password-field input::placeholder {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.fum-password-toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ede9fe;
+  border: none;
+  cursor: pointer;
+  color: #7c3aed;
+  font-size: 11px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: all 0.15s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.fum-password-toggle:hover {
+  background: #d8b4fe;
+  color: #5b21b6;
+}
+
+/* ============================================
+   📋 FORM GRID
+   ============================================ */
+.fum-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.fum-form-grid .fum-full-width,
+.fum-form-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.fum-hint {
+  font-size: 10px;
+  color: #6b7280;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ============================================
+   🔽 DROPDOWN
+   ============================================ */
+.fum-dropdown-wrapper {
+  position: relative;
+}
+
+.fum-dropdown-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.fum-dropdown-input:focus-within {
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.fum-dropdown-search {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  min-height: 36px;
+}
+
+.fum-dropdown-arrow {
+  padding: 0 12px;
+  color: #6b7280;
+  font-size: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fum-dropdown-list {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 20;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.fum-dropdown-loading,
+.fum-dropdown-empty {
+  padding: 14px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.fum-dropdown-empty small {
+  display: block;
+  font-size: 10px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.fum-dropdown-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.fum-dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.fum-dropdown-item.selected {
+  background: #ede9fe;
+  border-left: 3px solid #8b5cf6;
+}
+
+.fum-dropdown-item-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.fum-dropdown-item-main strong {
+  font-size: 12px;
+  color: #1a2a5e;
+}
+
+.fum-dropdown-item-code {
+  font-size: 10px;
+  color: #8b5cf6;
+  background: #ede9fe;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+.fum-dropdown-item-sub {
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 3px;
+}
+
+.fum-selected-franchise {
+  margin-top: 6px;
+  padding: 6px 12px;
+  background: #ecfdf5;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* ============================================
+   🔐 PERMISSIONS SECTION
+   ============================================ */
+.fum-permissions-section {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid #f1f3f5;
+}
+
+.fum-permissions-section h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0 0 10px 0;
+}
+
+.fum-permissions-category-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.fum-permissions-category-filter label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.fum-category-select {
+  padding: 5px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  font-size: 11px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.fum-permissions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 4px;
+  max-height: 180px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.fum-permission-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid transparent;
+}
+
+.fum-permission-checkbox:hover {
+  background: #f3f4f6;
+}
+
+.fum-permission-checkbox.checked {
+  background: #ede9fe;
+  border-color: #d8b4fe;
+}
+
+.fum-permission-checkbox input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #8b5cf6;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.fum-permission-checkbox .perm-label {
+  font-size: 11px;
+  color: #374151;
+}
+
+.fum-permissions-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.fum-btn-select-all,
+.fum-btn-deselect-all {
+  padding: 5px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fum-btn-select-all {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.fum-btn-select-all:hover {
+  background: #a7f3d0;
+}
+
+.fum-btn-deselect-all {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.fum-btn-deselect-all:hover {
+  background: #fecaca;
+}
+
+.fum-permissions-count {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ============================================
+   ✏️ EDIT SUMMARY
+   ============================================ */
+.fum-edit-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.fum-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.fum-edit-field label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.fum-edit-value {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1a2a5e;
+  word-break: break-word;
+}
+
+/* ============================================
+   🗑️ DELETE MODAL
+   ============================================ */
+.fum-delete-modal {
+  max-width: 420px;
+}
+
+.fum-delete-icon {
+  font-size: 42px;
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.fum-delete-text {
+  text-align: center;
+  font-size: 14px;
+  color: #374151;
+  margin-bottom: 14px;
+}
+
+.fum-delete-details {
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.fum-delete-details div {
+  padding: 3px 0;
+  font-size: 12px;
+}
+
+.fum-delete-details div strong {
+  color: #1a2a5e;
+}
+
+.fum-delete-warning {
+  text-align: center;
+  font-size: 11px;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.fum-btn-delete-confirm {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fum-btn-delete-confirm:hover {
+  background: #dc2626;
+}
+
+/* ============================================
+   🔐 PERMISSION MODAL
+   ============================================ */
+.fum-permission-modal {
+  max-width: 760px;
+}
+
+.fum-permissions-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+.fum-permissions-summary p {
+  margin: 0;
+  font-size: 12px;
+}
+
+.fum-permissions-summary p strong {
+  color: #1a2a5e;
+}
+
+/* ============================================
+   🎉 SUCCESS MODAL
+   ============================================ */
+.fum-success-modal {
+  max-width: 480px;
+}
+
+.fum-success-header {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 16px 20px;
+}
+
+.fum-success-header h3 {
+  color: white;
+  margin: 0;
+}
+
+.fum-success-header .fum-modal-close {
+  color: white;
+}
+
+.fum-success-icon {
+  font-size: 28px;
+  margin-right: 8px;
+}
+
+.fum-success-details {
+  margin: 8px 0 14px 0;
+}
+
+.fum-success-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f1f3f5;
+  gap: 10px;
+}
+
+.fum-success-label {
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.fum-success-value {
+  font-size: 12px;
+  color: #1a2a5e;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  word-break: break-all;
+  text-align: right;
+}
+
+.fum-copy-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 3px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.fum-copy-btn:hover {
+  background: #f3f4f6;
+  color: #8b5cf6;
+}
+
+.fum-copy-all-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 16px;
+  background: #ede9fe;
+  color: #7c3aed;
+  border: 2px solid #d8b4fe;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 8px 0;
+}
+
+.fum-copy-all-btn:hover {
+  background: #d8b4fe;
+  color: #5b21b6;
+}
+
+.fum-success-hint {
+  font-size: 11px;
+  color: #ef4444;
+  text-align: center;
+  margin: 6px 0 0 0;
+  padding: 8px;
+  background: #fee2e2;
+  border-radius: 4px;
+  border-left: 3px solid #ef4444;
+}
+
+/* ============================================
+   🎨 BUTTONS
+   ============================================ */
+.fum-btn-cancel,
+.fum-btn-submit {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fum-btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.fum-btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.fum-btn-submit {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.fum-btn-submit:hover {
+  transform: translateY(-1px);
+}
+
+.fum-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============================================
+   🎨 SELECT DROPDOWN OVERRIDE
+   ============================================ */
+.fum-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px !important;
+}
+
+/* ============================================
+   🎨 SCROLLBAR
+   ============================================ */
+.fum-permissions-grid::-webkit-scrollbar,
+.fum-dropdown-list::-webkit-scrollbar,
+.fum-table-scroll::-webkit-scrollbar,
+.fum-modal::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.fum-permissions-grid::-webkit-scrollbar-track,
+.fum-dropdown-list::-webkit-scrollbar-track,
+.fum-table-scroll::-webkit-scrollbar-track,
+.fum-modal::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 3px;
+}
+
+.fum-permissions-grid::-webkit-scrollbar-thumb,
+.fum-dropdown-list::-webkit-scrollbar-thumb,
+.fum-table-scroll::-webkit-scrollbar-thumb,
+.fum-modal::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.fum-permissions-grid::-webkit-scrollbar-thumb:hover,
+.fum-dropdown-list::-webkit-scrollbar-thumb:hover,
+.fum-table-scroll::-webkit-scrollbar-thumb:hover,
+.fum-modal::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================================
+   📱 RESPONSIVE - Tablet
+   ============================================ */
+@media (max-width: 992px) {
+  .fum-container { padding: 14px 16px; }
+  .fum-title { font-size: 20px; }
+  .fum-stats { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+  .fum-stat { padding: 8px 12px; }
+  .fum-stat-number { font-size: 18px; }
+  .fum-modal { max-width: 620px; }
+  .fum-permissions-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .fum-table-scroll { max-height: 480px; }
+}
+
+/* ============================================
+   📱 RESPONSIVE - Mobile
+   ============================================ */
+@media (max-width: 768px) {
+  .fum-container { padding: 10px 12px; }
+  
+  .fum-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .fum-title { font-size: 18px; }
+  .fum-subtitle { font-size: 12px; }
+  
+  .fum-btn-primary {
+    padding: 8px 16px;
+    font-size: 13px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .fum-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  
+  .fum-stat { padding: 8px 10px; }
+  .fum-stat-number { font-size: 16px; }
+  .fum-stat-label { font-size: 10px; }
+  
+  .fum-search { padding: 9px 14px; font-size: 13px; }
+
+  /* ✅ HIDE HEADER & STATS WHEN SEARCHING ON MOBILE */
+  .fum-container.fum-searching .fum-hide-on-search-mobile {
+    display: none !important;
+  }
+
+  .fum-container.fum-searching .fum-search-wrapper {
+    margin-top: 4px;
+  }
+  
+  .fum-table-scroll { max-height: 420px; }
+  .fum-table tbody td { padding: 5px 8px; font-size: 12px; height: 30px; }
+  .fum-table thead th { padding: 6px 8px; font-size: 10px; }
+  .fum-text-name { font-size: 12px; max-width: 140px; }
+  .fum-text-email { font-size: 11px; max-width: 160px; }
+  .fum-code { font-size: 11px; padding: 2px 6px; }
+  
+  .fum-form-grid { grid-template-columns: 1fr; gap: 10px; }
+  .fum-form-grid .fum-full-width,
+  .fum-form-grid .full-width { grid-column: 1; }
+
+  .fum-modal-form > .fum-form-group,
+  .fum-modal-form > .fum-form-grid,
+  .fum-modal-form > .fum-permissions-section {
+    padding: 0 16px;
+  }
+  
+  .fum-form-group input,
+  .fum-form-group select {
+    height: 42px;
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .fum-password-field input {
+    padding: 8px 78px 8px 12px !important;
+    height: 42px;
+    font-size: 14px;
+  }
+
+  .fum-password-toggle {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .fum-modal { width: 96%; max-height: 94vh; border-radius: 10px; }
+  .fum-modal-header { padding: 12px 16px; }
+  .fum-modal-header h3 { font-size: 16px; }
+  .fum-modal-body { padding: 14px 16px; }
+  .fum-modal-footer { padding: 10px 16px; flex-direction: column-reverse; }
+  .fum-modal-footer button { width: 100%; justify-content: center; }
+  
+  .fum-edit-summary { grid-template-columns: 1fr 1fr; padding: 10px 12px; }
+  .fum-permissions-summary { grid-template-columns: 1fr; padding: 10px 12px; }
+  .fum-permissions-grid { grid-template-columns: 1fr 1fr; max-height: 160px; }
+  
+  .fum-pagination {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px 12px;
+  }
+  
+  .fum-pagination-info { text-align: center; font-size: 11px; }
+  .fum-pagination-controls { justify-content: center; }
+  
+  .fum-dropdown-item-main { flex-direction: column; align-items: flex-start; gap: 3px; }
+  
+  .fum-success-item { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .fum-success-value { text-align: left; width: 100%; }
+  .fum-success-modal { max-width: 100%; margin: 8px; }
+  .fum-delete-modal { max-width: 100%; margin: 8px; }
+  .fum-permission-modal { max-width: 100%; margin: 8px; }
+  .fum-edit-summary { grid-template-columns: 1fr; }
+  
+  .fum-skeleton-stats { grid-template-columns: 1fr 1fr; }
+  .fum-skeleton-title { width: 140px; height: 20px; }
+  .fum-skeleton-button { width: 80px; height: 28px; }
+}
+
+/* ============================================
+   📱 RESPONSIVE - Small Mobile
+   ============================================ */
+@media (max-width: 480px) {
+  .fum-container { padding: 8px 10px; }
+  .fum-title { font-size: 16px; }
+  
+  .fum-stats { grid-template-columns: 1fr 1fr; gap: 5px; }
+  .fum-stat { padding: 7px 9px; }
+  .fum-stat-number { font-size: 15px; }
+  .fum-stat-label { font-size: 9px; }
+  
+  .fum-table { font-size: 11px; min-width: 650px; }
+  .fum-table thead th { padding: 5px 6px; font-size: 9px; }
+  .fum-table tbody td { padding: 4px 6px; font-size: 11px; height: 28px; }
+  .fum-text-name { font-size: 11px; max-width: 120px; }
+  .fum-text-email { font-size: 10px; max-width: 140px; }
+  .fum-code { font-size: 10px; padding: 1px 5px; }
+  
+  .fum-btn-edit, .fum-btn-delete { font-size: 12px; padding: 3px 5px; }
+  .fum-btn-permission { font-size: 10px; padding: 3px 8px; }
+  .fum-status { font-size: 9px; padding: 2px 8px; }
+  
+  .fum-modal { width: 98%; border-radius: 8px; }
+  .fum-modal-header h3 { font-size: 15px; }
+
+  .fum-modal-form > .fum-form-group,
+  .fum-modal-form > .fum-form-grid,
+  .fum-modal-form > .fum-permissions-section {
+    padding: 0 14px;
+  }
+  
+  .fum-form-group input,
+  .fum-form-group select {
+    font-size: 13px;
+    padding: 7px 10px;
+    height: 40px;
+  }
+
+  .fum-password-field input {
+    padding: 7px 72px 7px 10px !important;
+    height: 40px;
+    font-size: 13px;
+  }
+
+  .fum-password-toggle {
+    font-size: 10px;
+    padding: 4px 7px;
+    right: 4px;
+  }
+  
+  .fum-permissions-grid { grid-template-columns: 1fr; max-height: 140px; }
+  
+  .fum-pagination-select { font-size: 10px; padding: 3px 8px; }
+  .fum-pagination-btn { font-size: 11px; padding: 4px 8px; min-width: 28px; }
+  .fum-pagination-current { font-size: 11px; padding: 4px 8px; }
+  
+  .fum-dropdown-search { font-size: 12px; padding: 6px 10px; min-height: 34px; }
+  .fum-dropdown-item { padding: 8px 10px; }
+  .fum-dropdown-item-main strong { font-size: 11px; }
+  .fum-dropdown-item-sub { font-size: 9px; }
+  
+  .fum-skeleton-stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* ============================================
+   🖨️ PRINT
+   ============================================ */
+@media print {
+  .fum-container { display: none !important; }
+}

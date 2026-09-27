@@ -1,0 +1,309 @@
+/* ====================================================
+   SCOPED VARIABLES - NAVY & GOLD THEME
+==================================================== */
+.fa-master-page {
+  --nav-bg: #0A1128;
+  --nav-card: rgba(16, 25, 53, 0.85);
+  --gold: #FFB703;
+  --gold-glow: rgba(255, 183, 3, 0.25);
+  --border: rgba(255, 255, 255, 0.08);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  
+  background-color: var(--nav-bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.fa-master-page * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Background Effects */
+.fa-bg-grid {
+  position: absolute; inset: 0; 
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); 
+  background-size: 40px 40px; z-index: 0; pointer-events: none; opacity: 0.5;
+}
+.fa-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: 0; opacity: 0.2; pointer-events: none; }
+.fa-blob-1 { width: 500px; height: 500px; background: var(--gold); top: -10%; left: -10%; }
+.fa-blob-2 { width: 400px; height: 400px; background: #162447; bottom: -10%; right: -10%; }
+
+/* ====================================================
+   POPUP MODAL CONTAINER (COMPACT DESIGN)
+==================================================== */
+.fa-popup-container {
+  background: var(--nav-card);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--gold-glow);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 850px; /* Wide enough for multi-column */
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow);
+  position: relative;
+  z-index: 2;
+  animation: faFadeInUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  overflow: hidden;
+}
+
+@keyframes faFadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* HEADER */
+.fa-header {
+  background: linear-gradient(135deg, var(--gold), #ffa000);
+  padding: 16px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--nav-bg);
+}
+
+.fa-header h3 {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 2px;
+}
+
+.fa-header p {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.fa-icon {
+  font-size: 30px;
+  background: rgba(255,255,255,0.2);
+  width: 50px; height: 50px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ====================================================
+   FORM GRIDS (2-COLUMN & 3-COLUMN)
+==================================================== */
+.fa-form {
+  padding: 25px 30px;
+}
+
+.fa-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 20px;
+  margin-bottom: 12px;
+}
+
+.fa-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 20px;
+  margin-bottom: 12px;
+}
+
+.fa-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 15px;
+}
+
+/* ====================================================
+   FORM FIELDS
+==================================================== */
+.fa-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.fa-field label span {
+  color: var(--gold);
+}
+
+.fa-opt {
+  color: var(--text-muted) !important;
+  font-size: 9px;
+  text-transform: none;
+}
+
+.fa-field input, 
+.fa-field textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.fa-field textarea {
+  resize: vertical;
+}
+
+.fa-field input::placeholder, 
+.fa-field textarea::placeholder {
+  color: rgba(255,255,255,0.3);
+}
+
+.fa-field input:focus, 
+.fa-field textarea:focus {
+  border-color: var(--gold);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* ====================================================
+   SUBMIT BUTTON
+==================================================== */
+.fa-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--gold), #ffa000);
+  color: var(--nav-bg);
+  padding: 14px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  box-shadow: 0 5px 15px var(--gold-glow);
+}
+
+.fa-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(255, 183, 3, 0.5);
+}
+
+.fa-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.fa-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(10,17,40,0.3);
+  border-top-color: var(--nav-bg);
+  border-radius: 50%;
+  animation: faSpin 0.8s linear infinite;
+}
+
+@keyframes faSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ====================================================
+   SUCCESS MESSAGE
+==================================================== */
+.fa-success-box {
+  padding: 50px 30px;
+  text-align: center;
+}
+
+.fa-success-icon {
+  font-size: 60px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.fa-success-box h4 {
+  font-size: 24px;
+  color: var(--gold);
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.fa-success-box p {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.fa-success-hint {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ====================================================
+   RESPONSIVE DESIGN
+==================================================== */
+@media (max-width: 992px) {
+  .fa-popup-container {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fa-master-page {
+    padding: 20px 15px;
+    align-items: flex-start; /* Better for mobile keyboards */
+  }
+  
+  /* Stack 3-columns into 1 on Tablet/Mobile */
+  .fa-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Stack 2-columns into 1 on Mobile */
+  .fa-grid-2 {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .fa-header {
+    padding: 15px 20px;
+  }
+  
+  .fa-header h3 {
+    font-size: 17px;
+  }
+  
+  .fa-header p {
+    font-size: 11px;
+  }
+  
+  .fa-icon {
+    width: 40px; height: 40px;
+    font-size: 22px;
+  }
+
+  .fa-form {
+    padding: 20px;
+  }
+  
+  .fa-field input, .fa-field textarea {
+    padding: 12px 14px; /* Slightly larger padding for touch targets */
+    font-size: 14px;
+  }
+}

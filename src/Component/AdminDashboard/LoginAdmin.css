@@ -1,0 +1,227 @@
+/* ========================================
+   LOGIN ADMIN - STYLES
+   ======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.login-admin-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f1724, #1a237e);
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-admin-container {
+  width: 100%;
+  max-width: 440px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 40px 32px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== LOGO ===== */
+.login-admin-logo {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo-icon {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  width: 70px;
+  height: 70px;
+  line-height: 60px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+.login-admin-logo h1 {
+  font-size: 28px;
+  color: #fff;
+  font-weight: 700;
+  margin: 8px 0 4px 0;
+}
+
+.login-admin-logo h1 span {
+  color: #d4af37;
+}
+
+.login-admin-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5px;
+}
+
+/* ===== FORM WRAPPER ===== */
+.login-admin-form-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 24px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.login-admin-form-wrapper h2 {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.login-admin-desc {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* ===== FORM ===== */
+.login-admin-form .form-group {
+  margin-bottom: 18px;
+}
+
+.login-admin-form label {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.login-admin-form input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.login-admin-form input:focus {
+  border-color: #d4af37;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+}
+
+.login-admin-form input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ===== ERROR MESSAGE ===== */
+.error-message {
+  background: rgba(255, 0, 0, 0.12);
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  color: #ff6b6b;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.login-admin-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #d4af37, #b8941e);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+}
+
+.login-admin-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+}
+
+.login-admin-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== FOOTER ===== */
+.login-admin-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.back-to-user-login {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.back-to-user-login:hover {
+  color: #d4af37;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 480px) {
+  .login-admin-container {
+    padding: 28px 18px;
+  }
+
+  .login-admin-form-wrapper {
+    padding: 18px 14px;
+  }
+
+  .login-admin-logo h1 {
+    font-size: 24px;
+  }
+
+  .login-admin-form-wrapper h2 {
+    font-size: 20px;
+  }
+
+  .login-admin-form input {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .login-admin-submit {
+    font-size: 15px;
+    padding: 12px;
+  }
+}

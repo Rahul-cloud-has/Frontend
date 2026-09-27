@@ -1,0 +1,960 @@
+/* Certificate.css - ProSkillHub Certificate Generator - FINAL */
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700;900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.cert-gen-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  font-family: 'Poppins', sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+.cert-gen-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+.gen-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #1a2a5e, #253d7a);
+  color: #fff;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gen-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.gen-icon { font-size: 28px; }
+.gen-header h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+.gen-header h1 span { color: #f0d060; }
+.gen-header p {
+  font-size: 11px;
+  opacity: 0.85;
+  margin: 2px 0 0;
+}
+
+.franchise-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #c8a84e, #b8941e);
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  white-space: nowrap;
+}
+.btn-add:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(200,168,78,0.35);
+}
+
+/* ========================================
+   LOADING STATE
+   ======================================== */
+.cert-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 40px;
+}
+
+.cert-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e5e7eb;
+  border-top-color: #1a2a5e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   FORM
+   ======================================== */
+.gen-form-container {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.gen-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.gen-form-header h3 {
+  font-size: 16px;
+  color: #1a2a5e;
+  margin: 0;
+  font-weight: 700;
+}
+
+.btn-close-form {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #fee2e2;
+  color: #ef4444;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-close-form:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.gen-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #374151;
+}
+.form-group label .required { color: #ef4444; }
+
+.form-group input,
+.form-group select {
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  transition: 0.2s;
+  width: 100%;
+  height: 36px;
+  color: #1e293b;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #1a2a5e;
+  box-shadow: 0 0 0 2px rgba(26,42,94,0.1);
+}
+
+/* Student Search */
+.student-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+.student-search-input-wrapper { position: relative; }
+
+.student-search-input {
+  width: 100%;
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #fff;
+  transition: 0.2s;
+  color: #1e293b;
+  height: 36px;
+}
+.student-search-input:focus {
+  outline: none;
+  border-color: #1a2a5e;
+  box-shadow: 0 0 0 2px rgba(26,42,94,0.1);
+}
+
+.selected-student-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  padding: 4px 12px;
+  background: #d1fae5;
+  color: #065f46;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.clear-selection {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* ========================================
+   PHOTO UPLOAD
+   ======================================== */
+.photo-upload-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.photo-preview {
+  width: 80px;
+  height: 95px;
+  border: 2px dashed #9ca3af;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  flex-shrink: 0;
+}
+.photo-preview-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.photo-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.btn-remove-photo {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  transition: 0.2s;
+}
+.btn-remove-photo:hover { transform: scale(1.1); }
+
+.photo-placeholder {
+  text-align: center;
+  padding: 8px;
+}
+.photo-placeholder span {
+  font-size: 24px;
+  display: block;
+}
+.photo-placeholder p {
+  font-size: 9px;
+  color: #999;
+  margin: 4px 0 0;
+}
+
+.photo-upload-btn-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.btn-upload-photo {
+  padding: 0 16px;
+  background: #1a2a5e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  height: 34px;
+}
+.btn-upload-photo:hover {
+  background: #253d7a;
+  transform: translateY(-1px);
+}
+.photo-status {
+  font-size: 11px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* ========================================
+   FORM ACTIONS
+   ======================================== */
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1.5px solid #e5e7eb;
+  flex-wrap: wrap;
+}
+
+.form-actions button {
+  padding: 0 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 38px;
+  white-space: nowrap;
+}
+
+.btn-preview { background: #1a2a5e; color: #fff; }
+.btn-preview:hover { background: #253d7a; transform: translateY(-1px); }
+.btn-pdf { background: #c8a84e; color: #fff; }
+.btn-pdf:hover { background: #b8941e; transform: translateY(-1px); }
+.btn-save { background: #10b981; color: #fff; }
+.btn-save:hover { background: #059669; transform: translateY(-1px); }
+.btn-cancel { background: #e5e7eb; color: #374151; }
+.btn-cancel:hover { background: #d1d5db; transform: translateY(-1px); }
+.btn-pdf:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ========================================
+   PREVIEW
+   ======================================== */
+.preview-section {
+  margin-top: 18px;
+  padding: 20px;
+  background: #f1f5f9;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.live-preview-wrapper {
+  transform: scale(0.78);
+  transform-origin: top center;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+/* ========================================
+   HISTORY TABLE - COMPACT
+   ======================================== */
+.cert-list {
+  padding: 16px 20px;
+}
+
+.cert-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cert-list-header h3 {
+  font-size: 16px;
+  color: #1a2a5e;
+  margin: 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cert-list-header .count {
+  background: #c8a84e;
+  color: #fff;
+  padding: 2px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+}
+
+.empty-list {
+  text-align: center;
+  padding: 40px 20px;
+}
+.empty-list span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+.empty-list h4 {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+.empty-list p {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  max-height: 500px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #1a2a5e;
+  border-radius: 4px;
+}
+
+.cert-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 780px;
+}
+
+.cert-table thead {
+  background: #1a2a5e;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.cert-table th {
+  padding: 8px 10px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #f0d060;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  height: 34px;
+}
+
+.cert-table td {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #1e293b;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+  height: 36px;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cert-table tbody tr {
+  transition: 0.15s;
+}
+.cert-table tbody tr:hover {
+  background: #f8fafc;
+}
+.cert-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cert-badge {
+  background: #1a2a5e;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.student-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.table-photo {
+  width: 28px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1.5px solid #c8a84e;
+  flex-shrink: 0;
+}
+
+.grade-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-block;
+  color: #fff;
+}
+.grade-aplus { background: #c8a84e; }
+.grade-a { background: #10b981; }
+.grade-bplus { background: #3b82f6; }
+.grade-b { background: #6366f1; }
+.grade-c { background: #f59e0b; }
+.grade-o { background: #ef4444; }
+
+.franchise-code-badge {
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #1a2a5e;
+  display: inline-block;
+}
+
+.table-actions {
+  display: flex;
+  gap: 3px;
+}
+
+.btn-edit-sm,
+.btn-pdf-sm,
+.btn-delete-sm {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+.btn-edit-sm { background: #dbeafe; color: #2563eb; }
+.btn-edit-sm:hover { background: #2563eb; color: #fff; transform: scale(1.05); }
+.btn-pdf-sm { background: #fef3c7; color: #d97706; }
+.btn-pdf-sm:hover { background: #d97706; color: #fff; transform: scale(1.05); }
+.btn-delete-sm { background: #fee2e2; color: #ef4444; }
+.btn-delete-sm:hover { background: #ef4444; color: #fff; transform: scale(1.05); }
+.btn-pdf-sm:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ==========================================
+   RESPONSIVE - ALL DEVICES
+   ========================================== */
+
+/* ===== LARGE DESKTOP (1400px+) ===== */
+@media (min-width: 1400px) {
+  .cert-gen-container { padding: 16px 24px; }
+  .cert-table { font-size: 13px; }
+  .cert-table td { height: 38px; font-size: 13px; }
+}
+
+/* ===== LAPTOP (1024px - 1399px) ===== */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .cert-gen-container { padding: 14px 18px; }
+  .cert-table td { height: 36px; }
+}
+
+/* ===== TABLET (768px - 1023px) ===== */
+@media (max-width: 1023px) {
+  .cert-gen-container { padding: 10px 12px; }
+  .gen-header { padding: 12px 16px; }
+  .gen-header h1 { font-size: 18px; }
+  .gen-form-container,
+  .cert-list { padding: 14px 16px; }
+  .cert-table { min-width: 720px; }
+}
+
+/* ===== MOBILE (max-width: 767px) ===== */
+@media (max-width: 767px) {
+  .cert-gen-container { padding: 6px; }
+  .cert-gen-card { border-radius: 10px; }
+
+  .gen-header {
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .gen-header-left {
+    justify-content: flex-start;
+  }
+
+  .gen-icon { font-size: 24px; }
+  .gen-header h1 { font-size: 16px; }
+  .gen-header p { font-size: 10px; }
+
+  .franchise-badge {
+    font-size: 9px;
+    padding: 2px 10px;
+  }
+
+  .btn-add {
+    width: 100%;
+    justify-content: center;
+    font-size: 12px;
+    height: 34px;
+  }
+
+  /* Form */
+  .gen-form-container { padding: 12px 14px; }
+  .gen-form-header h3 { font-size: 15px; }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-group label { font-size: 10px; }
+  .form-group input,
+  .form-group select,
+  .student-search-input {
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-actions button {
+    width: 100%;
+    justify-content: center;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  /* Photo Upload */
+  .photo-upload-wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .photo-preview {
+    width: 90px;
+    height: 105px;
+  }
+  .photo-upload-btn-wrapper {
+    width: 100%;
+    align-items: center;
+  }
+  .btn-upload-photo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Preview */
+  .live-preview-wrapper {
+    transform: scale(0.5);
+  }
+  .preview-section {
+    padding: 12px;
+  }
+
+  /* Table */
+  .cert-list { padding: 12px 14px; }
+  .cert-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cert-list-header h3 { font-size: 15px; }
+
+  .cert-table {
+    min-width: 700px;
+    font-size: 12px;
+  }
+
+  .cert-table th {
+    font-size: 9px;
+    padding: 6px 8px;
+    height: 30px;
+  }
+
+  .cert-table td {
+    font-size: 12px;
+    padding: 4px 8px;
+    height: 34px;
+  }
+
+  .cert-badge {
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  .grade-badge {
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  .franchise-code-badge {
+    font-size: 9px;
+    padding: 1px 6px;
+  }
+
+  .table-photo {
+    width: 24px;
+    height: 28px;
+  }
+
+  .btn-edit-sm,
+  .btn-pdf-sm,
+  .btn-delete-sm {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+}
+
+/* ===== SMALL MOBILE (max-width: 480px) ===== */
+@media (max-width: 480px) {
+  .cert-gen-container { padding: 4px; }
+  .gen-header { padding: 10px 12px; }
+  .gen-header h1 { font-size: 14px; }
+  .gen-icon { font-size: 20px; }
+  .gen-header p { font-size: 9px; }
+
+  .btn-add { font-size: 11px; padding: 6px 14px; height: 32px; }
+
+  .gen-form-container { padding: 8px 10px; }
+  .gen-form-header h3 { font-size: 14px; }
+
+  .form-group label { font-size: 9px; }
+  .form-group input,
+  .form-group select,
+  .student-search-input {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 10px;
+  }
+
+  .form-actions button { font-size: 11px; padding: 0 14px; height: 34px; }
+
+  .cert-list { padding: 8px 10px; }
+  .cert-list-header h3 { font-size: 13px; }
+
+  .cert-table {
+    min-width: 650px;
+    font-size: 11px;
+  }
+
+  .cert-table th {
+    font-size: 8px;
+    padding: 5px 6px;
+    height: 28px;
+  }
+
+  .cert-table td {
+    font-size: 11px;
+    padding: 4px 6px;
+    height: 30px;
+  }
+
+  .cert-badge {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  .grade-badge {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  .franchise-code-badge {
+    font-size: 8px;
+    padding: 1px 5px;
+  }
+  .btn-edit-sm,
+  .btn-pdf-sm,
+  .btn-delete-sm {
+    width: 24px;
+    height: 24px;
+    font-size: 10px;
+  }
+
+  .live-preview-wrapper {
+    transform: scale(0.38);
+  }
+
+  .table-photo {
+    width: 20px;
+    height: 24px;
+  }
+}
+
+/* ===== EXTRA SMALL (max-width: 360px) ===== */
+@media (max-width: 360px) {
+  .cert-gen-container { padding: 2px; }
+  .gen-header h1 { font-size: 13px; }
+  .btn-add { font-size: 10px; height: 30px; }
+
+  .form-group input,
+  .form-group select,
+  .student-search-input {
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .cert-table {
+    min-width: 600px;
+    font-size: 10px;
+  }
+
+  .cert-table th {
+    font-size: 8px;
+    padding: 4px 5px;
+    height: 26px;
+  }
+
+  .cert-table td {
+    font-size: 10px;
+    padding: 3px 5px;
+    height: 28px;
+  }
+}
+
+/* ==========================================
+   ✅ PRINT STYLES - FIXED YELLOW LINE
+   ========================================== */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .cert-gen-container {
+    padding: 0 !important;
+    background: #fff !important;
+    max-width: 100% !important;
+  }
+
+  .gen-header,
+  .gen-form-container,
+  .cert-list,
+  .form-actions,
+  .btn-add,
+  .gen-form-header,
+  .form-row,
+  .btn-close-form {
+    display: none !important;
+  }
+
+  .preview-section {
+    background: #fff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+  }
+
+  .live-preview-wrapper {
+    transform: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .cert-gen-card {
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* ✅ REMOVE ALL UNDERLINES FROM STUDENT NAME */
+  .live-preview-wrapper div {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  /* ✅ REMOVE YELLOW/GOLD SELECTION HIGHLIGHTS */
+  .live-preview-wrapper ::selection {
+    background: transparent !important;
+    color: inherit !important;
+  }
+
+  .live-preview-wrapper *::-moz-selection {
+    background: transparent !important;
+    color: inherit !important;
+  }
+
+  /* Ensure no browser default focus outlines */
+  .live-preview-wrapper *:focus,
+  .live-preview-wrapper *:hover,
+  .live-preview-wrapper *:active {
+    outline: none !important;
+    text-decoration: none !important;
+    background-color: inherit !important;
+  }
+
+  /* Page settings */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+}

@@ -1,0 +1,1189 @@
+/* ============================================
+   📁 FranchiseCertificateReport.css - FINAL
+   Mobile: Filters ONE ROW + Bigger Fonts
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== CONTAINER ===== */
+.cert-report-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f0f2f5;
+  min-height: 100vh;
+}
+
+.cert-report-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   🏠 HEADER
+   ============================================ */
+.cert-report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a2a5e;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.cert-report-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+}
+
+.cert-report-header p {
+  font-size: 11px;
+  color: #6b7a8f;
+  margin: 2px 0 0;
+}
+
+.cert-report-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.cert-btn-refresh,
+.cert-btn-print {
+  padding: 0 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 34px;
+  white-space: nowrap;
+}
+
+.cert-btn-refresh {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.cert-btn-refresh:hover {
+  background: #e2e8f0;
+}
+
+.cert-btn-print {
+  background: #6366f1;
+  color: white;
+}
+
+.cert-btn-print:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* ============================================
+   🔍 FILTERS - ALWAYS ONE ROW
+   ============================================ */
+.cert-report-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.filter-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.cert-report-search {
+  width: 100%;
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  transition: all 0.2s;
+  background: #f9fafb;
+  color: #111827;
+  height: 34px;
+}
+
+.cert-report-search:focus {
+  border-color: #1a2a5e;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(26, 42, 94, 0.1);
+}
+
+.cert-report-search::placeholder {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.cert-report-select {
+  width: 100%;
+  padding: 0 28px 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 12px;
+  background: #f9fafb;
+  color: #111827;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 34px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.cert-report-select:focus {
+  outline: none;
+  border-color: #1a2a5e;
+  background-color: white;
+}
+
+.cert-report-reset {
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  background: #f1f5f9;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 34px;
+  color: #475569;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cert-report-reset:hover {
+  background: #e2e8f0;
+}
+
+/* ============================================
+   📊 TABLE
+   ============================================ */
+.cert-report-table-wrap {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 450px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cert-report-table-wrap::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.cert-report-table-wrap::-webkit-scrollbar-thumb {
+  background: #1a2a5e;
+  border-radius: 4px;
+}
+
+.cert-report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 780px;
+  background: #ffffff;
+}
+
+.cert-report-table thead {
+  background: #1a2a5e;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.cert-report-table th {
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.cert-report-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #111827;
+  vertical-align: middle;
+  font-size: 12px;
+  height: 34px;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cert-report-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.cert-report-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== BADGES ===== */
+.cert-report-id {
+  background: #f0f7ff;
+  color: #1a2a5e;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-block;
+  border: 1px solid #dbeafe;
+}
+
+.grade-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.grade-aplus {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+/* ===== STATUS BADGE ===== */
+.cert-status-badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.cert-status-active {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.cert-status-expired {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.cert-status-inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.cert-status-generated {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+/* ============================================
+   👁️ ACTION BUTTONS
+   ============================================ */
+.cert-report-actions-cell {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.cert-report-view-btn,
+.cert-report-download-btn,
+.cert-report-print-btn {
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+  transition: all 0.2s;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-report-view-btn {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.cert-report-view-btn:hover {
+  background: #bfdbfe;
+  transform: scale(1.08);
+}
+
+.cert-report-download-btn {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.cert-report-download-btn:hover {
+  background: #fde68a;
+  transform: scale(1.08);
+}
+
+.cert-report-download-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.cert-report-print-btn {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.cert-report-print-btn:hover {
+  background: #ddd6fe;
+  transform: scale(1.08);
+}
+
+/* ============================================
+   📄 PAGINATION
+   ============================================ */
+.cert-report-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  margin-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cert-report-page-info {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.cert-report-page-btns {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.cert-report-page-btn {
+  padding: 0 10px;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 30px;
+  text-align: center;
+  color: #4b5563;
+  height: 30px;
+}
+
+.cert-report-page-btn:hover:not(:disabled):not(.active) {
+  background: #f1f5f9;
+}
+
+.cert-report-page-btn.active {
+  background: #1a2a5e;
+  color: white;
+  border-color: #1a2a5e;
+}
+
+.cert-report-page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   📭 EMPTY / LOADING / ERROR
+   ============================================ */
+.cert-report-empty {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.cert-report-empty span {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.5;
+}
+
+.cert-report-empty p {
+  font-size: 14px;
+  color: #475569;
+  margin: 0;
+  font-weight: 500;
+}
+
+.cert-report-empty small {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.cert-report-loading {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.cert-report-error {
+  text-align: center;
+  padding: 40px;
+}
+
+.cert-report-error span {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cert-report-error p {
+  font-size: 13px;
+  color: #ef4444;
+  margin-bottom: 12px;
+}
+
+.cert-report-error button {
+  padding: 6px 16px;
+  background: #1a2a5e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ============================================
+   🖥️ MODAL
+   ============================================ */
+.cert-report-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  padding: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cert-report-modal {
+  background: white;
+  border-radius: 12px;
+  max-width: 96vw;
+  max-height: 94vh;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  animation: slideUp 0.35s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.cert-report-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  border-bottom: 2px solid #1a2a5e;
+  flex-shrink: 0;
+}
+
+.cert-report-modal-header h3 {
+  font-size: 14px;
+  color: #1a2a5e;
+  margin: 0;
+  font-weight: 700;
+}
+
+.cert-report-modal-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.btn-print-modal {
+  padding: 5px 14px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.btn-print-modal:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+}
+
+.btn-pdf-modal {
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #c8a84e, #b8941e);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.btn-pdf-modal:hover {
+  background: #b8941e;
+  transform: translateY(-1px);
+}
+
+.btn-pdf-modal:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cert-report-modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #fee2e2;
+  color: #ef4444;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cert-report-modal-close:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.cert-report-modal-body {
+  padding: 12px;
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.certificate-preview-wrapper {
+  transform: scale(0.55);
+  transform-origin: top center;
+  width: 850px;
+  height: 1150px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.certificate-preview-content {
+  width: 850px;
+  height: 1150px;
+}
+
+/* ==========================================
+   📱 RESPONSIVE
+   ========================================== */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+  .cert-report-container {
+    max-width: 1400px;
+    padding: 16px 24px;
+  }
+
+  .cert-report-table td {
+    font-size: 13px;
+    height: 36px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .certificate-preview-wrapper {
+    transform: scale(0.42);
+  }
+}
+
+/* ==========================================
+   ✅ MOBILE (max-width: 768px)
+   FILTERS ONE ROW + BIGGER FONTS
+   ========================================== */
+@media (max-width: 768px) {
+  .cert-report-container {
+    padding: 6px 8px;
+  }
+
+  .cert-report-card {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Header */
+  .cert-report-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-bottom: 8px;
+  }
+
+  .cert-report-header > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cert-report-header h2 {
+    font-size: 15px;
+  }
+
+  .cert-report-header p {
+    font-size: 10px;
+  }
+
+  .cert-report-actions {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .cert-btn-refresh,
+  .cert-btn-print {
+    flex: 1;
+    justify-content: center;
+    height: 32px;
+    font-size: 11px;
+    padding: 0 10px;
+  }
+
+  /* ✅ FILTERS - ALWAYS ONE ROW */
+  .cert-report-filters {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px;
+    padding: 6px 0;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .filter-group {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .cert-report-search {
+    flex: 2;
+    height: 32px;
+    font-size: 12px;
+    padding: 0 10px;
+    min-width: 0;
+  }
+
+  .cert-report-search::placeholder {
+    font-size: 11px;
+  }
+
+  .cert-report-select {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 20px 0 8px;
+    min-width: 0;
+  }
+
+  .cert-report-reset {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 10px;
+    flex-shrink: 0;
+    min-width: 50px;
+  }
+
+  /* ✅ TABLE - BIGGER FONTS */
+  .cert-report-table-wrap {
+    max-height: 400px;
+  }
+
+  .cert-report-table {
+    min-width: 750px;
+    font-size: 13px; /* ✅ Bigger */
+  }
+
+  .cert-report-table th {
+    font-size: 11px; /* ✅ Bigger */
+    padding: 7px 8px;
+    height: 32px;
+    color: #fff;
+  }
+
+  .cert-report-table td {
+    padding: 6px 8px;
+    height: 34px;
+    font-size: 13px; /* ✅ Bigger */
+    color: #111827;
+    font-weight: 500;
+    max-width: 140px;
+  }
+
+  .cert-report-id {
+    font-size: 11px; /* ✅ Bigger */
+    padding: 2px 7px;
+  }
+
+  .grade-badge {
+    font-size: 11px; /* ✅ Bigger */
+    padding: 2px 7px;
+  }
+
+  .cert-status-badge {
+    font-size: 11px; /* ✅ Bigger */
+    padding: 2px 7px;
+  }
+
+  .cert-report-view-btn,
+  .cert-report-download-btn,
+  .cert-report-print-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .certificate-preview-wrapper {
+    transform: scale(0.32);
+  }
+
+  .cert-report-modal {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .cert-report-modal-body {
+    padding: 6px;
+  }
+
+  .cert-report-pagination {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cert-report-page-info {
+    font-size: 11px;
+  }
+}
+
+/* ==========================================
+   ✅ SMALL MOBILE (max-width: 480px)
+   ========================================== */
+@media (max-width: 480px) {
+  .cert-report-container {
+    padding: 4px;
+  }
+
+  .cert-report-card {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .cert-report-header h2 {
+    font-size: 14px;
+  }
+
+  .cert-report-header p {
+    font-size: 9px;
+  }
+
+  .cert-btn-refresh,
+  .cert-btn-print {
+    height: 30px;
+    font-size: 10px;
+    padding: 0 8px;
+  }
+
+  /* Filters Still One Row */
+  .cert-report-filters {
+    gap: 4px;
+    padding: 5px 0;
+  }
+
+  .cert-report-search {
+    height: 30px;
+    font-size: 12px;
+    padding: 0 8px;
+  }
+
+  .cert-report-search::placeholder {
+    font-size: 10px;
+  }
+
+  .cert-report-select {
+    height: 30px;
+    font-size: 10px;
+    padding: 0 18px 0 6px;
+  }
+
+  .cert-report-reset {
+    height: 30px;
+    font-size: 10px;
+    padding: 0 8px;
+    min-width: 44px;
+  }
+
+  /* Table Still Bigger Font */
+  .cert-report-table-wrap {
+    max-height: 360px;
+  }
+
+  .cert-report-table {
+    min-width: 700px;
+    font-size: 12px; /* ✅ Still readable */
+  }
+
+  .cert-report-table th {
+    font-size: 10px;
+    padding: 5px 6px;
+    height: 28px;
+  }
+
+  .cert-report-table td {
+    padding: 5px 6px;
+    font-size: 12px;
+    height: 30px;
+    max-width: 110px;
+  }
+
+  .cert-report-id,
+  .grade-badge,
+  .cert-status-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .cert-report-view-btn,
+  .cert-report-download-btn,
+  .cert-report-print-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+    border-radius: 3px;
+  }
+
+  .certificate-preview-wrapper {
+    transform: scale(0.25);
+  }
+
+  .cert-report-page-btn {
+    height: 26px;
+    min-width: 26px;
+    font-size: 11px;
+    padding: 0 8px;
+  }
+
+  .cert-report-page-info {
+    font-size: 10px;
+  }
+
+  .cert-report-modal-header h3 {
+    font-size: 12px;
+  }
+
+  .btn-print-modal,
+  .btn-pdf-modal {
+    font-size: 10px;
+    padding: 0 10px;
+    height: 28px;
+  }
+
+  .cert-report-modal-close {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}
+
+/* Extra Small */
+@media (max-width: 360px) {
+  .cert-report-container {
+    padding: 2px;
+  }
+
+  .cert-report-card {
+    padding: 6px;
+  }
+
+  .cert-report-filters {
+    gap: 3px;
+  }
+
+  .cert-report-search {
+    height: 28px;
+    font-size: 11px;
+    padding: 0 6px;
+  }
+
+  .cert-report-search::placeholder {
+    font-size: 9px;
+  }
+
+  .cert-report-select {
+    height: 28px;
+    font-size: 9px;
+    padding: 0 15px 0 5px;
+  }
+
+  .cert-report-reset {
+    height: 28px;
+    font-size: 9px;
+    padding: 0 6px;
+    min-width: 38px;
+  }
+
+  .cert-report-table {
+    min-width: 640px;
+    font-size: 11px;
+  }
+
+  .cert-report-table th {
+    font-size: 9px;
+    padding: 4px 5px;
+    height: 26px;
+  }
+
+  .cert-report-table td {
+    font-size: 11px;
+    padding: 4px 5px;
+    height: 28px;
+    max-width: 90px;
+  }
+
+  .cert-report-view-btn,
+  .cert-report-download-btn,
+  .cert-report-print-btn {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .certificate-preview-wrapper {
+    transform: scale(0.22);
+  }
+}
+
+/* ============================================
+   🖨️ PRINT
+   ============================================ */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  .cert-report-container {
+    padding: 0 !important;
+    background: #fff !important;
+    max-width: 100% !important;
+  }
+
+  .cert-report-header,
+  .cert-report-filters,
+  .cert-report-pagination,
+  .cert-report-actions,
+  .cert-report-actions-cell,
+  .cert-btn-refresh,
+  .cert-btn-print,
+  .cert-report-view-btn,
+  .cert-report-download-btn,
+  .cert-report-print-btn,
+  .cert-report-table-wrap {
+    display: none !important;
+  }
+
+  .cert-report-card {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    max-height: none !important;
+  }
+
+  .cert-report-modal-overlay {
+    position: static !important;
+    background: #fff !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+  }
+
+  .cert-report-modal {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .cert-report-modal-header {
+    display: none !important;
+  }
+
+  .cert-report-modal-body {
+    padding: 0 !important;
+    background: white !important;
+  }
+
+  .certificate-preview-wrapper {
+    transform: none !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+  }
+
+  .certificate-preview-content * {
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+}
+/* ============================================
+   ✅ NEW - Print Button in Table Row
+   ============================================ */
+.cert-report-actions-cell {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.cert-report-print-btn {
+  border: none;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+  transition: all 0.2s;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.cert-report-print-btn:hover {
+  background: #ddd6fe;
+  transform: scale(1.08);
+}
+
+/* Print Button in Modal */
+.btn-print-modal {
+  padding: 5px 14px;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.btn-print-modal:hover {
+  background: #4f46e5;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* Mobile - Print button */
+@media (max-width: 768px) {
+  .cert-report-print-btn {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .btn-print-modal {
+    font-size: 10px;
+    padding: 0 10px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-report-print-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .btn-print-modal {
+    font-size: 9px;
+    padding: 0 8px;
+    height: 28px;
+  }
+}

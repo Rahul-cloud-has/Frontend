@@ -1,0 +1,1222 @@
+/* ============================================
+   📁 FranchiseCertificate.css - FINAL RESPONSIVE
+   Mobile: Bigger Fonts + Compact Table Row
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== CONTAINER ===== */
+.fc-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  background: #f0f2f5;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ===== MAIN CARD ===== */
+.fc-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+}
+
+/* ===== LOADING ===== */
+.fc-loading {
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* ============================================
+   🏠 HEADER
+   ============================================ */
+.fc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #1a2a5e;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fc-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fc-icon {
+  font-size: 22px;
+  background: #f8faff;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #eef2f6;
+  flex-shrink: 0;
+}
+
+.fc-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.fc-title span {
+  color: #c8a84e;
+}
+
+.fc-subtitle {
+  font-size: 11px;
+  color: #6b7a8f;
+  margin: 2px 0 0;
+}
+
+/* ============================================
+   ➕ ADD BUTTON
+   ============================================ */
+.fc-btn-add {
+  background: linear-gradient(135deg, #1a2a5e, #253d7a);
+  color: white;
+  border: none;
+  padding: 0 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 36px;
+  white-space: nowrap;
+}
+
+.fc-btn-add:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(26, 42, 94, 0.25);
+}
+
+/* ============================================
+   📝 FORM CONTAINER
+   ============================================ */
+.fc-form-container {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.fc-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1.5px solid #e5e7eb;
+}
+
+.fc-form-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+}
+
+.fc-btn-close {
+  background: #fee2e2;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ef4444;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-btn-close:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* ============================================
+   🏷️ FORM TABS
+   ============================================ */
+.fc-tab-container {
+  display: flex;
+  gap: 4px;
+  background: #f1f4f9;
+  padding: 3px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.fc-tab-btn {
+  flex: 1;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  color: #6b7a8f;
+  height: 32px;
+}
+
+.fc-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #1a2a5e;
+}
+
+.fc-tab-active {
+  background: #ffffff !important;
+  color: #1a2a5e !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* ============================================
+   📋 FORM
+   ============================================ */
+.fc-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fc-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.fc-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fc-form-group.fc-full-width {
+  grid-column: 1 / -1;
+}
+
+.fc-form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.fc-required {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.fc-form-group input,
+.fc-form-group select {
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: border-color 0.2s;
+  background: #ffffff;
+  color: #1e293b;
+  font-family: inherit;
+  height: 36px;
+  width: 100%;
+}
+
+.fc-form-group input:focus,
+.fc-form-group select:focus {
+  outline: none;
+  border-color: #1a2a5e;
+  box-shadow: 0 0 0 2px rgba(26, 42, 94, 0.1);
+}
+
+.fc-form-group input::placeholder {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+/* ============================================
+   🔍 SEARCH
+   ============================================ */
+.fc-search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.fc-search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.fc-search-input {
+  width: 100%;
+  padding: 0 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: all 0.2s;
+  background: #ffffff;
+  height: 36px;
+}
+
+.fc-search-input:focus {
+  outline: none;
+  border-color: #1a2a5e;
+  box-shadow: 0 0 0 2px rgba(26, 42, 94, 0.1);
+}
+
+.fc-selected-badge {
+  position: absolute;
+  right: 6px;
+  background: #f0f7ff;
+  padding: 2px 8px 2px 10px;
+  border-radius: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #1a2a5e;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid #dbeafe;
+  white-space: nowrap;
+}
+
+.fc-clear-selection {
+  background: none;
+  border: none;
+  color: #6b7a8f;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 0 2px;
+}
+
+.fc-clear-selection:hover {
+  color: #dc2626;
+}
+
+/* ============================================
+   📸 PHOTO UPLOAD
+   ============================================ */
+.fc-photo-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.fc-photo-preview {
+  width: 60px;
+  height: 72px;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.fc-photo-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.fc-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fc-photo-placeholder {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.fc-photo-placeholder span {
+  font-size: 20px;
+  display: block;
+}
+
+.fc-photo-placeholder p {
+  font-size: 8px;
+  margin: 2px 0 0;
+}
+
+.fc-btn-remove-photo {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  background: rgba(220, 38, 38, 0.9);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 9px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-btn-remove-photo:hover {
+  background: #dc2626;
+  transform: scale(1.1);
+}
+
+.fc-photo-upload-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fc-btn-upload {
+  background: #f1f5f9;
+  border: 1.5px dashed #94a3b8;
+  padding: 0 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.fc-btn-upload:hover {
+  background: #e2e8f0;
+  border-color: #1a2a5e;
+  color: #1a2a5e;
+}
+
+.fc-photo-status {
+  font-size: 10px;
+  font-weight: 600;
+  color: #16a34a;
+}
+
+/* ============================================
+   🎯 FORM ACTIONS
+   ============================================ */
+.fc-form-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1.5px solid #e5e7eb;
+}
+
+.fc-btn-preview,
+.fc-btn-pdf,
+.fc-btn-save,
+.fc-btn-cancel {
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 36px;
+  white-space: nowrap;
+}
+
+.fc-btn-preview {
+  background: #f1f5f9;
+  color: #475569;
+}
+.fc-btn-preview:hover {
+  background: #e2e8f0;
+}
+
+.fc-btn-pdf {
+  background: #dc2626;
+  color: white;
+}
+.fc-btn-pdf:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}
+.fc-btn-pdf:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fc-btn-save {
+  background: #1a2a5e;
+  color: white;
+}
+.fc-btn-save:hover {
+  background: #0f1a3a;
+  transform: translateY(-1px);
+}
+.fc-btn-save:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fc-btn-cancel {
+  background: #f1f4f9;
+  color: #6b7a8f;
+}
+.fc-btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+/* ============================================
+   👁️ PREVIEW SECTION
+   ============================================ */
+.fc-preview-section {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 2px solid #e5e7eb;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+  overflow-x: auto;
+}
+
+.fc-preview-wrapper {
+  width: 100%;
+  max-width: 850px;
+  overflow: auto;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.fc-preview-wrapper > div {
+  width: 850px;
+  min-height: 1150px;
+  margin: 0 auto;
+  transform-origin: top center;
+  background: #ffffff;
+}
+
+/* ============================================
+   📋 HISTORY LIST
+   ============================================ */
+.fc-list {
+  margin-top: 14px;
+}
+
+.fc-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fc-list-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a2a5e;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fc-count {
+  background: #1a2a5e;
+  color: #fff;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.fc-list-sub {
+  font-size: 11px;
+  color: #6b7a8f;
+}
+
+/* ============================================
+   📊 TABLE - Compact
+   ============================================ */
+.fc-table-wrap {
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 450px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.fc-table-wrap::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.fc-table-wrap::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.fc-table-wrap::-webkit-scrollbar-thumb {
+  background: #1a2a5e;
+  border-radius: 4px;
+}
+
+.fc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  min-width: 780px;
+  background: #ffffff;
+}
+
+.fc-table thead {
+  background: #1a2a5e;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.fc-table th {
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 700;
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  height: 32px;
+  white-space: nowrap;
+}
+
+.fc-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #1e293b;
+  vertical-align: middle;
+  height: 34px;
+  font-size: 12px;
+  white-space: nowrap;
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fc-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.fc-table tbody tr:hover {
+  background: #f8faff;
+}
+
+.fc-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== BADGE ===== */
+.fc-badge {
+  background: #1a2a5e;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+/* ===== USER CELL ===== */
+.fc-user-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fc-table-photo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #c8a84e;
+  background: #f8fafc;
+  flex-shrink: 0;
+}
+
+/* ===== TABLE ACTIONS ===== */
+.fc-actions {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.fc-btn-edit,
+.fc-btn-pdf-sm,
+.fc-btn-delete {
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fc-btn-edit {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+.fc-btn-edit:hover {
+  background: #bfdbfe;
+  transform: scale(1.08);
+}
+
+.fc-btn-pdf-sm {
+  background: #fef3c7;
+  color: #d97706;
+}
+.fc-btn-pdf-sm:hover {
+  background: #fde68a;
+  transform: scale(1.08);
+}
+.fc-btn-pdf-sm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.fc-btn-delete {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.fc-btn-delete:hover {
+  background: #fecaca;
+  transform: scale(1.08);
+}
+
+/* ============================================
+   📭 EMPTY STATE
+   ============================================ */
+.fc-empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: #fafbfc;
+  border-radius: 8px;
+  border: 2px dashed #e2e8f0;
+}
+
+.fc-empty span {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 8px;
+  opacity: 0.5;
+}
+
+.fc-empty h4 {
+  font-size: 16px;
+  color: #1e293b;
+  margin: 0 0 4px;
+}
+
+.fc-empty p {
+  font-size: 13px;
+  color: #6b7a8f;
+  margin: 0;
+}
+
+/* ==========================================
+   📱 RESPONSIVE - ALL DEVICES
+   ========================================== */
+
+/* ===== LARGE DESKTOP (1400px+) ===== */
+@media (min-width: 1400px) {
+  .fc-container {
+    max-width: 1400px;
+    padding: 16px 24px;
+  }
+
+  .fc-table {
+    font-size: 13px;
+  }
+
+  .fc-table td {
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+/* ===== TABLET (max-width: 1024px) ===== */
+@media (max-width: 1024px) {
+  .fc-container {
+    padding: 10px 12px;
+  }
+
+  .fc-title {
+    font-size: 17px;
+  }
+
+  .fc-preview-wrapper > div {
+    transform: scale(0.65);
+    transform-origin: top center;
+  }
+}
+
+/* ==========================================
+   ✅ MOBILE (max-width: 768px) - BIGGER FONTS
+   Table stays in ONE ROW with scroll
+   ========================================== */
+@media (max-width: 768px) {
+  .fc-container {
+    padding: 6px 8px;
+  }
+
+  .fc-card {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Header */
+  .fc-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+  }
+
+  .fc-header-left {
+    gap: 8px;
+  }
+
+  .fc-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .fc-title {
+    font-size: 16px;
+  }
+
+  .fc-subtitle {
+    font-size: 10px;
+  }
+
+  .fc-btn-add {
+    width: 100%;
+    justify-content: center;
+    font-size: 12px;
+    height: 34px;
+  }
+
+  /* Form */
+  .fc-form-container {
+    padding: 10px;
+  }
+
+  .fc-form-header h3 {
+    font-size: 14px;
+  }
+
+  .fc-form-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 10px;
+  }
+
+  .fc-form-group label {
+    font-size: 11px;
+  }
+
+  .fc-form-group input,
+  .fc-form-group select,
+  .fc-search-input {
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .fc-tab-btn {
+    font-size: 11px;
+    height: 30px;
+  }
+
+  .fc-btn-preview,
+  .fc-btn-pdf,
+  .fc-btn-save,
+  .fc-btn-cancel {
+    height: 34px;
+    font-size: 11px;
+    padding: 0 14px;
+  }
+
+  .fc-preview-wrapper > div {
+    transform: scale(0.4);
+    transform-origin: top center;
+  }
+
+  .fc-list-header h3 {
+    font-size: 14px;
+  }
+
+  /* ✅ TABLE - BIGGER FONTS + HORIZONTAL SCROLL */
+  .fc-table-wrap {
+    max-height: 400px;
+  }
+
+  .fc-table {
+    font-size: 13px; /* ✅ 10px → 13px */
+    min-width: 780px;
+  }
+
+  .fc-table th {
+    font-size: 11px; /* ✅ 8px → 11px */
+    padding: 7px 8px;
+    height: 32px;
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .fc-table td {
+    padding: 6px 8px;
+    height: 34px;
+    font-size: 13px; /* ✅ 10px → 13px */
+    color: #111827;
+    font-weight: 500;
+    max-width: 140px;
+  }
+
+  .fc-badge {
+    font-size: 11px; /* ✅ 8px → 11px */
+    padding: 2px 7px;
+  }
+
+  .fc-table-photo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .fc-btn-edit,
+  .fc-btn-pdf-sm,
+  .fc-btn-delete {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .fc-photo-preview {
+    width: 60px;
+    height: 72px;
+  }
+
+  .fc-btn-upload {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 12px;
+  }
+
+  .fc-count {
+    font-size: 11px;
+    padding: 2px 10px;
+  }
+
+  .fc-empty h4 {
+    font-size: 15px;
+  }
+
+  .fc-empty p {
+    font-size: 12px;
+  }
+}
+
+/* ==========================================
+   ✅ SMALL MOBILE (max-width: 480px)
+   ========================================== */
+@media (max-width: 480px) {
+  .fc-container {
+    padding: 4px;
+  }
+
+  .fc-card {
+    padding: 8px;
+    border-radius: 8px;
+  }
+
+  .fc-title {
+    font-size: 14px;
+  }
+
+  .fc-subtitle {
+    font-size: 9px;
+  }
+
+  .fc-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .fc-btn-add {
+    font-size: 11px;
+    height: 32px;
+  }
+
+  /* Form */
+  .fc-form-container {
+    padding: 8px;
+  }
+
+  .fc-form-header h3 {
+    font-size: 13px;
+  }
+
+  .fc-form-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .fc-form-group label {
+    font-size: 10px;
+  }
+
+  .fc-form-group input,
+  .fc-form-group select,
+  .fc-search-input {
+    height: 32px;
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .fc-tab-container {
+    flex-direction: row;
+  }
+
+  .fc-tab-btn {
+    font-size: 10px;
+    height: 28px;
+  }
+
+  .fc-form-actions {
+    gap: 6px;
+  }
+
+  .fc-btn-preview,
+  .fc-btn-pdf,
+  .fc-btn-save,
+  .fc-btn-cancel {
+    height: 32px;
+    font-size: 11px;
+    padding: 0 12px;
+    flex: 1;
+    min-width: 80px;
+    justify-content: center;
+  }
+
+  .fc-preview-wrapper > div {
+    transform: scale(0.28);
+    transform-origin: top center;
+  }
+
+  .fc-list-header h3 {
+    font-size: 13px;
+  }
+
+  /* ✅ TABLE - Still Bigger Font */
+  .fc-table-wrap {
+    max-height: 360px;
+  }
+
+  .fc-table {
+    font-size: 12px; /* ✅ Still readable */
+    min-width: 720px;
+  }
+
+  .fc-table th {
+    font-size: 10px;
+    padding: 5px 6px;
+    height: 30px;
+  }
+
+  .fc-table td {
+    padding: 5px 6px;
+    height: 30px;
+    font-size: 12px;
+    max-width: 110px;
+  }
+
+  .fc-badge {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .fc-table-photo {
+    width: 22px;
+    height: 22px;
+  }
+
+  .fc-btn-edit,
+  .fc-btn-pdf-sm,
+  .fc-btn-delete {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .fc-photo-preview {
+    width: 55px;
+    height: 66px;
+  }
+
+  .fc-photo-placeholder span {
+    font-size: 18px;
+  }
+
+  .fc-photo-placeholder p {
+    font-size: 8px;
+  }
+
+  .fc-btn-upload {
+    height: 30px;
+    font-size: 10px;
+    padding: 0 10px;
+  }
+
+  .fc-photo-status {
+    font-size: 9px;
+  }
+
+  .fc-empty span {
+    font-size: 32px;
+  }
+
+  .fc-empty h4 {
+    font-size: 14px;
+  }
+
+  .fc-empty p {
+    font-size: 11px;
+  }
+
+  .fc-count {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  .fc-list-sub {
+    font-size: 10px;
+  }
+}
+
+/* ==========================================
+   ✅ EXTRA SMALL (max-width: 360px)
+   ========================================== */
+@media (max-width: 360px) {
+  .fc-container {
+    padding: 2px;
+  }
+
+  .fc-card {
+    padding: 6px;
+    border-radius: 6px;
+  }
+
+  .fc-title {
+    font-size: 13px;
+  }
+
+  .fc-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .fc-form-container {
+    padding: 6px;
+  }
+
+  .fc-form-group input,
+  .fc-form-group select,
+  .fc-search-input {
+    height: 30px;
+    font-size: 11px;
+    padding: 0 8px;
+  }
+
+  .fc-form-group label {
+    font-size: 9px;
+  }
+
+  .fc-btn-preview,
+  .fc-btn-pdf,
+  .fc-btn-save,
+  .fc-btn-cancel {
+    height: 30px;
+    font-size: 10px;
+    padding: 0 10px;
+  }
+
+  .fc-table {
+    font-size: 11px;
+    min-width: 660px;
+  }
+
+  .fc-table th {
+    font-size: 9px;
+    padding: 4px 5px;
+    height: 28px;
+  }
+
+  .fc-table td {
+    padding: 4px 5px;
+    height: 28px;
+    font-size: 11px;
+    max-width: 95px;
+  }
+
+  .fc-badge {
+    font-size: 9px;
+    padding: 1px 5px;
+  }
+
+  .fc-btn-edit,
+  .fc-btn-pdf-sm,
+  .fc-btn-delete {
+    width: 22px;
+    height: 22px;
+    font-size: 10px;
+  }
+
+  .fc-preview-wrapper > div {
+    transform: scale(0.24);
+    transform-origin: top center;
+  }
+}

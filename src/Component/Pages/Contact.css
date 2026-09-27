@@ -1,0 +1,178 @@
+/* ====================================================
+   SCOPED VARIABLES (Navy & Gold Theme)
+==================================================== */
+.cnt-master {
+  --nav-bg: #0A1128;
+  --nav-card: rgba(16, 25, 53, 0.7);
+  --gold: #FFB703;
+  --gold-glow: rgba(255, 183, 3, 0.25);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hov: rgba(255, 183, 3, 0.5);
+  --text-main: #ffffff;
+  --text-muted: #94a3b8;
+  
+  background-color: var(--nav-bg);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.cnt-master * { box-sizing: border-box; margin: 0; padding: 0; }
+.cnt-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; }
+.cnt-gold-text { color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+
+/* Backgrounds */
+.cnt-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 40px 40px; z-index: 0; pointer-events: none; opacity: 0.5;}
+.cnt-blob { position: absolute; border-radius: 50%; filter: blur(140px); z-index: 0; opacity: 0.25; pointer-events: none; animation: cntFloat 20s infinite alternate;}
+.cnt-blob-1 { width: 500px; height: 500px; background: var(--gold); top: -10%; right: -10%;}
+.cnt-blob-2 { width: 600px; height: 600px; background: #162447; bottom: -10%; left: -10%;}
+@keyframes cntFloat { 100% { transform: translate(40px, 40px) scale(1.1); } }
+
+/* Scroll Reveal */
+.cnt-reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.cnt-reveal.cnt-visible { opacity: 1; transform: translateY(0); }
+
+/* Headings & Tags */
+.cnt-heading { text-align: center; margin-bottom: 50px; }
+.cnt-heading h2 { font-size: 38px; font-weight: 900; margin-bottom: 10px; }
+.cnt-tag { display: inline-block; padding: 6px 20px; background: rgba(255,183,3,0.1); border: 1px solid var(--gold-glow); color: var(--gold); border-radius: 30px; font-size: 12px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;}
+
+/* ====================================================
+   HERO SECTION
+==================================================== */
+.cnt-hero { position: relative; padding: 120px 0 80px; text-align: center; overflow: hidden;}
+.cnt-hero-overlay { position: absolute; inset: 0; background: radial-gradient(circle at top, rgba(255,183,3,0.1), transparent 60%); z-index: 1;}
+.cnt-hero-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto;}
+.cnt-badge { display: inline-block; padding: 6px 18px; border: 1px solid var(--gold); color: var(--gold); border-radius: 30px; font-size: 12px; font-weight: 800; margin-bottom: 20px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);}
+.cnt-hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 15px;}
+.cnt-hero p { font-size: 16px; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6;}
+.cnt-breadcrumb { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 14px; font-weight: 600;}
+.cnt-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: 0.3s;}
+.cnt-breadcrumb a:hover { color: var(--gold);}
+.cnt-breadcrumb span { color: var(--text-muted);}
+.cnt-breadcrumb .cnt-active { color: var(--gold);}
+
+/* ====================================================
+   INFO CARDS
+==================================================== */
+.cnt-info-section { position: relative; z-index: 5; margin-top: -30px; padding-bottom: 50px;}
+.cnt-info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;}
+.cnt-info-card { background: var(--nav-card); border: 1px solid var(--border); padding: 30px 20px; border-radius: 16px; text-align: center; backdrop-filter: blur(10px); transition: 0.3s;}
+.cnt-info-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--gold-glow);}
+.cnt-info-icon { width: 60px; height: 60px; background: rgba(0,0,0,0.3); border: 1px solid var(--gold-glow); color: var(--gold); font-size: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 15px;}
+.cnt-info-card h3 { font-size: 16px; font-weight: 800; margin-bottom: 10px; color: #fff;}
+.cnt-info-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5;}
+
+/* ====================================================
+   FORM & MAP
+==================================================== */
+.cnt-form-section { padding: 60px 0; position: relative; z-index: 2;}
+.cnt-form-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start;}
+
+/* Form Left */
+.cnt-form-left { background: var(--nav-card); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(10px);}
+.cnt-form-left h2 { font-size: 32px; font-weight: 900; margin-bottom: 10px;}
+.cnt-form-left p { color: var(--text-muted); font-size: 14px; margin-bottom: 30px;}
+
+.cnt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;}
+.cnt-field { margin-bottom: 15px;}
+.cnt-field input, .cnt-field textarea { width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: #fff; border-radius: 10px; font-size: 14px; outline: none; transition: 0.3s; font-family: inherit;}
+.cnt-field textarea { resize: vertical; }
+.cnt-field input::placeholder, .cnt-field textarea::placeholder { color: rgba(255,255,255,0.3);}
+.cnt-field input:focus, .cnt-field textarea:focus { border-color: var(--gold); box-shadow: 0 0 15px var(--gold-glow); background: rgba(0,0,0,0.5);}
+
+.cnt-submit-btn { width: 100%; background: linear-gradient(135deg, var(--gold), #ffa000); color: var(--nav-bg); padding: 15px; border: none; border-radius: 50px; font-weight: 800; font-size: 15px; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px var(--gold-glow);}
+.cnt-submit-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(255,183,3,0.5);}
+.cnt-submit-btn:disabled { opacity: 0.7; cursor: not-allowed;}
+
+/* Map Right */
+.cnt-map-card { background: var(--nav-card); border: 1px solid var(--border); padding: 30px; border-radius: 20px; position: sticky; top: 30px; backdrop-filter: blur(10px);}
+.cnt-map-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 20px; display: flex; align-items: center;}
+.cnt-map-box { border-radius: 12px; overflow: hidden; margin-bottom: 25px; border: 1px solid var(--border);}
+.cnt-map-box iframe { display: block; width: 100%; }
+
+/* Social Icons */
+.cnt-social-links h4 { font-size: 16px; font-weight: 800; margin-bottom: 15px;}
+.cnt-social-icons { display: flex; gap: 15px; flex-wrap: wrap;}
+.cnt-social-btn { width: 45px; height: 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #fff; transition: 0.3s; text-decoration: none;}
+.cnt-social-btn:hover { background: var(--hover-color); border-color: var(--hover-color); transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+
+/* ====================================================
+   BRANCHES
+==================================================== */
+.cnt-branches-section { padding: 60px 0; position: relative; z-index: 2;}
+.cnt-branches-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;}
+.cnt-branch-card { background: var(--nav-card); border: 1px solid var(--border); padding: 30px; border-radius: 16px; text-align: center; transition: 0.3s;}
+.cnt-branch-card:hover { transform: translateY(-8px); border-color: var(--gold); box-shadow: 0 15px 30px rgba(0,0,0,0.5);}
+.cnt-branch-icon { font-size: 35px; color: var(--gold); margin-bottom: 15px;}
+.cnt-branch-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 8px;}
+.cnt-branch-card p { font-size: 13px; color: var(--text-muted); margin-bottom: 15px;}
+.cnt-branch-phone { display: inline-flex; align-items: center; gap: 8px; color: var(--gold); font-size: 14px; font-weight: 700; text-decoration: none;}
+
+/* ====================================================
+   FAQ
+==================================================== */
+.cnt-faq-section { padding: 60px 0; position: relative; z-index: 2;}
+.cnt-faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 900px; margin: 0 auto;}
+.cnt-faq-card { background: var(--nav-card); border: 1px solid var(--border); padding: 25px; border-radius: 14px; transition: 0.3s;}
+.cnt-faq-card:hover { border-color: var(--border-hov); transform: translateY(-3px);}
+.cnt-faq-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: #fff;}
+.cnt-faq-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6;}
+
+/* ====================================================
+   CTA
+==================================================== */
+.cnt-cta-section { padding: 60px 0 100px; position: relative; z-index: 2;}
+.cnt-cta-box { background: linear-gradient(135deg, rgba(22,36,71,0.6), rgba(10,17,40,0.9)); border: 1px solid var(--border); border-radius: 20px; padding: 60px 40px; text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);}
+.cnt-cta-glow { position: absolute; width: 250px; height: 250px; background: var(--gold); filter: blur(100px); top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.15; z-index: 0; pointer-events: none;}
+.cnt-cta-box > * { position: relative; z-index: 1;}
+.cnt-cta-box h2 { font-size: 34px; font-weight: 900; margin-bottom: 12px;}
+.cnt-cta-box p { font-size: 16px; color: var(--text-muted); margin-bottom: 30px;}
+.cnt-cta-btns { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;}
+
+.cnt-btn-gold { background: linear-gradient(135deg, var(--gold), #ffa000); color: var(--nav-bg); padding: 14px 34px; border-radius: 50px; font-weight: 800; font-size: 14px; text-decoration: none; display: inline-block; transition: 0.3s;}
+.cnt-btn-gold:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 25px rgba(255,183,3,0.5);}
+.cnt-btn-glass { background: rgba(255,255,255,0.05); border: 1px solid var(--border); backdrop-filter: blur(10px); color: var(--text-main); padding: 14px 34px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: 0.3s; display: inline-block;}
+.cnt-btn-glass:hover { background: rgba(255,255,255,0.15); transform: translateY(-4px); }
+
+/* ====================================================
+   FLOATING WHATSAPP
+==================================================== */
+.cnt-float-wa {
+  position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px;
+  background: #25D366; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 32px; box-shadow: 0 5px 20px rgba(37,211,102,0.5); z-index: 999;
+  animation: pulseWa 2s infinite; transition: 0.3s;
+}
+.cnt-float-wa:hover { transform: scale(1.15); animation: none;}
+@keyframes pulseWa { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); } 50% { box-shadow: 0 0 0 15px rgba(37,211,102,0); } }
+
+/* ====================================================
+   RESPONSIVE DESIGN
+==================================================== */
+@media (max-width: 1024px) {
+  .cnt-info-grid { grid-template-columns: repeat(2, 1fr); }
+  .cnt-form-grid { grid-template-columns: 1fr; gap: 30px;}
+  .cnt-map-card { position: relative; top: 0;}
+  .cnt-branches-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .cnt-hero h1 { font-size: 40px;}
+  .cnt-form-left { padding: 30px 20px;}
+  .cnt-form-row { grid-template-columns: 1fr; margin-bottom: 0;}
+  .cnt-faq-grid { grid-template-columns: 1fr;}
+}
+
+@media (max-width: 600px) {
+  .cnt-hero h1 { font-size: 32px;}
+  .cnt-hero p { font-size: 14px;}
+  .cnt-info-grid { grid-template-columns: 1fr;}
+  .cnt-branches-grid { grid-template-columns: 1fr;}
+  .cnt-cta-box { padding: 40px 20px;}
+  .cnt-cta-box h2 { font-size: 26px;}
+  .cnt-cta-btns { flex-direction: column;}
+  .cnt-btn-gold, .cnt-btn-glass { text-align: center; width: 100%;}
+  .cnt-float-wa { width: 50px; height: 50px; font-size: 26px; bottom: 20px; right: 20px;}
+}

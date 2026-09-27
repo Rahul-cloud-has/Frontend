@@ -1,0 +1,1167 @@
+/* ==============================================================
+   AddCourse.css — FINAL PRODUCTION VERSION
+   Fully Responsive | Force Light Mode | Mobile-Perfect
+   ============================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ══════════════════════════════════════════════════════
+   🔥 FORCE LIGHT MODE — Prevents Mobile Dark Bg
+════════════════════════════════════════════════════════ */
+html {
+  color-scheme: light only;
+  background: #f5f5f5;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f5f5f5;
+  color: #222;
+  color-scheme: light only;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+#root,
+#app {
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* ══════════════════════════════════════════════════════
+   MAIN CONTAINER
+════════════════════════════════════════════════════════ */
+.course-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px;
+  min-height: 100vh;
+  background: #f5f5f5;
+  width: 100%;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARD
+════════════════════════════════════════════════════════ */
+.course-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+  color: #222;
+}
+
+/* ══════════════════════════════════════════════════════
+   HEADER
+════════════════════════════════════════════════════════ */
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #4f46e5;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.course-header h2 {
+  font-size: 18px;
+  color: #222;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ══════════════════════════════════════════════════════
+   BUTTONS
+════════════════════════════════════════════════════════ */
+.btn-add-toggle {
+  background: #4f46e5;
+  color: #fff;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-add-toggle:hover {
+  background: #4338ca;
+}
+
+.btn-back {
+  background: #eee;
+  color: #333;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-back:hover { background: #ddd; }
+
+/* ══════════════════════════════════════════════════════
+   ALERTS
+════════════════════════════════════════════════════════ */
+.success-msg {
+  background: #d4edda;
+  color: #155724;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  border-left: 3px solid #28a745;
+}
+
+.error-msg {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 10px;
+  border-left: 3px solid #dc3545;
+}
+
+.loading-msg {
+  background: #cce5ff;
+  color: #004085;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.loading-state {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* ══════════════════════════════════════════════════════
+   FORM SECTION
+════════════════════════════════════════════════════════ */
+.form-section {
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 14px;
+  margin-bottom: 14px;
+  border: 1px solid #e0e0e0;
+  color: #222;
+}
+
+.form-wrapper h3 {
+  font-size: 15px;
+  color: #222;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.course-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555;
+}
+
+.req { color: #dc3545; }
+
+.form-group input,
+.form-group select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #ffffff;
+  color: #222;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #4f46e5;
+  background: #ffffff;
+  color: #222;
+}
+
+.form-group input.error,
+.form-group select.error {
+  border-color: #dc3545;
+  background: #fff5f5;
+}
+
+.form-group input.total {
+  background: #fff8e1;
+  font-weight: 700;
+  color: #8b6914;
+  text-align: center;
+}
+
+.err {
+  color: #dc3545;
+  font-size: 11px;
+}
+
+/* Placeholder & Autofill */
+input::placeholder,
+textarea::placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #222 !important;
+  caret-color: #222 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ══════════════════════════════════════════════════════
+   SELECT WITH ADD BUTTON
+════════════════════════════════════════════════════════ */
+.select-with-add {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.select-with-add select {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #ffffff;
+  color: #222;
+}
+
+.select-with-add select:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.btn-add-option {
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-add-option:hover { background: #4338ca; }
+
+/* ══════════════════════════════════════════════════════
+   ADD OPTION INPUT
+════════════════════════════════════════════════════════ */
+.add-option-input {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.small-input {
+  flex: 1;
+  min-width: 100px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #ffffff;
+  color: #222;
+}
+
+.small-input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.btn-add-small {
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-add-small:hover { background: #218838; }
+
+.btn-cancel-small {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.btn-cancel-small:hover { background: #c82333; }
+
+/* ══════════════════════════════════════════════════════
+   FORM BUTTONS
+════════════════════════════════════════════════════════ */
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.btn-submit {
+  background: #4f46e5;
+  color: #fff;
+  padding: 8px 22px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-submit:hover:not(:disabled) { background: #4338ca; }
+.btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-cancel {
+  background: #dc3545;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-cancel:hover { background: #c82333; }
+
+.btn-clear {
+  background: #eee;
+  color: #555;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-clear:hover { background: #ddd; }
+
+/* ══════════════════════════════════════════════════════
+   TABLE SECTION
+════════════════════════════════════════════════════════ */
+.table-section { margin-top: 2px; }
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.table-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+
+.table-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.search-box {
+  padding: 7px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 12px;
+  width: 200px;
+  background: #ffffff;
+  color: #222;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-box:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+.btn-refresh {
+  background: #eee;
+  color: #555;
+  padding: 7px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-refresh:hover:not(:disabled) { background: #ddd; }
+.btn-refresh:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ══════════════════════════════════════════════════════
+   TABLE — SCROLLABLE
+════════════════════════════════════════════════════════ */
+.table-wrapper {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  overflow-y: auto;
+  overflow-x: auto;
+  max-height: 415px;
+  background: #ffffff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: #f0f4f8;
+  border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 750px;
+  background: #ffffff;
+}
+
+.course-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.course-table th {
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #444;
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.course-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #f1f3f5;
+  font-size: 13px;
+  color: #333;
+  background: #ffffff;
+  white-space: nowrap;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.course-table tbody tr:hover td {
+  background: #f8f8ff;
+}
+
+.course-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.total-amount {
+  font-weight: 700;
+  color: #28a745;
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: #999;
+  font-size: 13px;
+  background: #ffffff;
+}
+
+/* ══════════════════════════════════════════════════════
+   ACTION BUTTONS
+════════════════════════════════════════════════════════ */
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 26px;
+  width: 26px;
+  font-size: 12px;
+  margin: 0 2px;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-action.edit { color: #4f46e5; }
+.btn-action.edit:hover:not(:disabled) {
+  background: #eef;
+  border-color: #4f46e5;
+}
+
+.btn-action.delete { color: #dc3545; }
+.btn-action.delete:hover:not(:disabled) {
+  background: #fee;
+  border-color: #dc3545;
+}
+
+.btn-action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ══════════════════════════════════════════════════════
+   PAGINATION
+════════════════════════════════════════════════════════ */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-info {
+  font-size: 12.5px;
+  color: #666;
+}
+
+.page-info strong { color: #111; }
+
+.page-btns {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-btns button {
+  padding: 0 10px;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #333;
+  height: 30px;
+  min-width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.page-btns button:hover:not(:disabled):not(.active) {
+  background: #f0f0ff;
+  border-color: #4f46e5;
+  color: #4f46e5;
+}
+
+.page-btns button.active {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}
+
+.page-btns button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.page-dots {
+  padding: 0 4px;
+  color: #999;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ══════════════════════════════════════════════════════
+   BADGES
+════════════════════════════════════════════════════════ */
+.category-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #eef;
+  color: #4338ca;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.duration-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #fff8e1;
+  color: #8b6914;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════════════
+   ✨ RESPONSIVE DESIGN
+════════════════════════════════════════════════════════ */
+
+/* LAPTOP */
+@media (min-width: 1024px) {
+  .course-container { padding: 16px 24px; }
+  .course-card { padding: 20px; }
+  .table-wrapper { max-height: 500px; }
+}
+
+/* TABLET */
+@media (max-width: 768px) {
+  .course-container { padding: 8px; }
+  .course-card { padding: 12px; }
+
+  .course-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .course-header h2 { font-size: 16px; text-align: center; }
+
+  .header-actions { width: 100%; }
+  .header-actions .btn-add-toggle {
+    flex: 1;
+    text-align: center;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .form-wrapper h3 { font-size: 14px; }
+
+  .table-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .table-controls {
+    width: 100%;
+  }
+
+  .search-box {
+    flex: 1;
+    width: 100%;
+  }
+
+  .table-wrapper { max-height: 380px; }
+  .course-table { min-width: 600px; }
+  .course-table th { font-size: 10px; padding: 6px 8px; }
+  .course-table td {
+    font-size: 12px;
+    padding: 6px 8px;
+    max-width: 130px;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .page-info {
+    font-size: 11px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .page-btns {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .page-btns button {
+    min-width: 28px;
+    height: 28px;
+    font-size: 11px;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .course-container { padding: 6px; }
+  .course-card {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .course-header h2 { font-size: 15px; }
+
+  .btn-add-toggle {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .form-section { padding: 10px; }
+
+  .form-group input,
+  .form-group select {
+    padding: 9px 10px;
+    font-size: 14px;   /* iOS zoom-prevent */
+  }
+
+  .form-group label { font-size: 11px; }
+
+  .btn-submit {
+    padding: 9px 16px;
+    font-size: 13px;
+    flex: 1;
+  }
+
+  .btn-cancel,
+  .btn-clear {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-actions button { width: 100%; }
+
+  .btn-add-option {
+    width: 40px;
+    height: 40px;
+  }
+
+  .table-wrapper { max-height: 350px; }
+  .course-table {
+    min-width: 550px;
+    font-size: 11px;
+  }
+  .course-table th {
+    font-size: 9px;
+    padding: 6px 7px;
+  }
+  .course-table td {
+    font-size: 11px;
+    padding: 6px 7px;
+    max-width: 100px;
+  }
+
+  .btn-action {
+    height: 26px;
+    width: 26px;
+    font-size: 11px;
+  }
+
+  .category-badge,
+  .duration-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+  }
+
+  .page-btns button {
+    min-width: 28px;
+    height: 28px;
+    font-size: 11px;
+    padding: 0 6px;
+  }
+
+  .search-box {
+    font-size: 14px;   /* iOS zoom-prevent */
+    padding: 8px 10px;
+  }
+
+  .add-option-input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-option-input button {
+    width: 100%;
+  }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 360px) {
+  .course-header h2 { font-size: 14px; }
+  .btn-add-toggle {
+    font-size: 11px;
+    padding: 7px 12px;
+  }
+  .course-table { min-width: 500px; }
+  .page-btns button {
+    min-width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   🔥 FORCE LIGHT MODE — Dark Mode Override
+════════════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+  html, body, #root, #app {
+    background: #f5f5f5 !important;
+    color: #222 !important;
+  }
+
+  .course-container { background: #f5f5f5 !important; }
+
+  .course-card {
+    background: #ffffff !important;
+    color: #222 !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  .course-header h2,
+  .table-title,
+  .form-wrapper h3 {
+    color: #222 !important;
+  }
+
+  .form-section {
+    background: #fafafa !important;
+    color: #222 !important;
+    border-color: #e0e0e0 !important;
+  }
+
+  .form-group label { color: #555 !important; }
+
+  .form-group input,
+  .form-group select,
+  .search-box,
+  .small-input,
+  .select-with-add select {
+    background: #ffffff !important;
+    color: #222 !important;
+    border-color: #ccc !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .search-box:focus,
+  .small-input:focus {
+    background: #ffffff !important;
+    color: #222 !important;
+    border-color: #4f46e5 !important;
+  }
+
+  .form-group input.total {
+    background: #fff8e1 !important;
+    color: #8b6914 !important;
+  }
+
+  input::placeholder, textarea::placeholder {
+    color: #999 !important;
+    opacity: 1;
+  }
+
+  .table-wrapper, .course-table {
+    background: #ffffff !important;
+    color: #222 !important;
+  }
+
+  .course-table th {
+    background: #f8f9fa !important;
+    color: #444 !important;
+  }
+
+  .course-table td {
+    background: #ffffff !important;
+    color: #333 !important;
+  }
+
+  .course-table tbody tr:hover td {
+    background: #f8f8ff !important;
+  }
+
+  .no-data, .loading-state {
+    background: #ffffff !important;
+    color: #999 !important;
+  }
+
+  .btn-back, .btn-clear, .btn-refresh {
+    background: #eee !important;
+    color: #333 !important;
+  }
+
+  .btn-action {
+    background: #ffffff !important;
+    border-color: #ddd !important;
+  }
+
+  .page-info { color: #666 !important; }
+  .page-info strong { color: #111 !important; }
+
+  .page-btns button {
+    background: #ffffff !important;
+    color: #333 !important;
+    border-color: #ddd !important;
+  }
+
+  .page-btns button.active {
+    background: #4f46e5 !important;
+    color: #ffffff !important;
+    border-color: #4f46e5 !important;
+  }
+
+  .page-dots { color: #999 !important; }
+
+  .category-badge {
+    background: #eef !important;
+    color: #4338ca !important;
+  }
+
+  .duration-badge {
+    background: #fff8e1 !important;
+    color: #8b6914 !important;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    -webkit-text-fill-color: #222 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   iOS Safari — Prevent zoom & dark bg
+════════════════════════════════════════════════════════ */
+@supports (-webkit-touch-callout: none) {
+  input, select, textarea {
+    font-size: 16px !important;
+    background-color: #ffffff !important;
+    color: #222 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   Android Chrome — Force white bg
+════════════════════════════════════════════════════════ */
+@media screen and (max-width: 768px) {
+  html, body, #root, #app {
+    background-color: #f5f5f5 !important;
+  }
+
+  .course-container {
+    background-color: #f5f5f5 !important;
+  }
+
+  .course-card,
+  .form-section,
+  .table-wrapper,
+  .course-table,
+  .course-table td {
+    background-color: #ffffff !important;
+  }
+
+  input, select, textarea {
+    background-color: #ffffff !important;
+    color: #222 !important;
+    -webkit-text-fill-color: #222 !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   Safe area for notch/status bar
+════════════════════════════════════════════════════════ */
+@supports (padding: max(0px)) {
+  body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    background: #f5f5f5 !important;
+  }
+}
+/* ══════════════════════════════════════════════════════
+   📱 MOBILE — Form ke Submit Button ko Bada Karo
+   ══════════════════════════════════════════════════════ */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .form-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 🔥 Add Course button — BADA */
+  .btn-submit {
+    width: 100% !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    height: auto !important;
+    min-height: 48px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+    letter-spacing: 0.3px;
+  }
+
+  .btn-submit:hover:not(:disabled) {
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .btn-cancel,
+  .btn-clear {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+    border-radius: 8px !important;
+  }
+}
+
+/* SMALL MOBILE */
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  /* 🔥 Add Course button — Extra BADA on small mobile */
+  .btn-submit {
+    width: 100% !important;
+    padding: 16px 20px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    min-height: 52px !important;
+    border-radius: 10px !important;
+    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.3);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .btn-submit:active:not(:disabled) {
+    transform: scale(0.98);
+    box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2);
+  }
+
+  .btn-cancel,
+  .btn-clear {
+    width: 100% !important;
+    padding: 14px 16px !important;
+    font-size: 14px !important;
+    min-height: 48px !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+  }
+}
+
+/* EXTRA SMALL MOBILE */
+@media (max-width: 360px) {
+  .btn-submit {
+    padding: 14px 16px !important;
+    font-size: 15px !important;
+    min-height: 48px !important;
+  }
+
+  .btn-cancel,
+  .btn-clear {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    min-height: 44px !important;
+  }
+}
