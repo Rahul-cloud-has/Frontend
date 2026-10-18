@@ -59,6 +59,8 @@ const Courses = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const sectionRef = useRef(null);
+  const enrollFromUrlHandled = useRef(false);
+  const openEnrollForCategoryRef = useRef(null);
   const location = useLocation();
 
   // Route to Top Helper
@@ -115,6 +117,11 @@ const Courses = () => {
   useEffect(() => {
     if (apiLoading) return;
     const params = new URLSearchParams(location.search);
+    const enrollFromURL = params.get("enroll");
+    if (enrollFromURL && !enrollFromUrlHandled.current) {
+      enrollFromUrlHandled.current = true;
+      openEnrollForCategoryRef.current?.(enrollFromURL);
+    }
     const searchFromURL = params.get("search");
     if (searchFromURL) setSearchTerm(searchFromURL);
     const categoryFromURL = params.get("category");
@@ -156,8 +163,10 @@ const Courses = () => {
 
   const activeCat = ALL_CATEGORIES.find((c) => String(c.id) === String(filter));
 
+  // A category with no courses yet still accepts an enquiry, using the category name.
+  const modalCategory = ALL_CATEGORIES.find((c) => String(c.id) === String(selectedCatId));
   const modalCourses = selectedCatId
-    ? ALL_CATEGORIES.find((c) => String(c.id) === String(selectedCatId))?.courses || []
+    ? (modalCategory?.courses?.length ? modalCategory.courses : modalCategory ? [{ id: `cat-${modalCategory.id}`, name: modalCategory.label, fee: "—" }] : [])
     : ALL_COURSES_LIST;
 
   useEffect(() => {
@@ -187,6 +196,24 @@ const Courses = () => {
     document.body.style.overflow = "hidden";
   };
 
+  // Enroll button on a category card: open the form with that category chosen;
+  // the user picks the course inside it (nothing is pre-picked on their behalf).
+  const openEnrollForCategory = (catId) => {
+    const cat = ALL_CATEGORIES.find((c) => String(c.id) === String(catId));
+    if (!cat) return;
+    setSelectedCatId(String(cat.id));
+    setEnrollModal({ id: null, name: "" });
+    setEnrollForm({
+      studentName: "", courseName: cat.courses.length ? "" : cat.label,
+      mobile: "", city: "", state: "", email: "",
+    });
+    setEnrollState("idle"); setEnrollError("");
+    document.body.style.overflow = "hidden";
+  };
+
+  // Always points at the current render's function so the URL effect never goes stale.
+  openEnrollForCategoryRef.current = openEnrollForCategory;
+
   const closeEnroll = () => {
     setEnrollModal(null); setEnrollState("idle"); setEnrollError("");
     document.body.style.overflow = "";
@@ -205,7 +232,7 @@ const Courses = () => {
     const catId = e.target.value;
     setSelectedCatId(catId);
     const cat = ALL_CATEGORIES.find((c) => String(c.id) === String(catId));
-    setEnrollForm((p) => ({ ...p, courseName: cat?.courses[0]?.name || "" }));
+    setEnrollForm((p) => ({ ...p, courseName: cat?.courses[0]?.name || cat?.label || "" }));
   };
 
   const handleEnrollSubmit = async (e) => {
@@ -317,7 +344,7 @@ const Courses = () => {
             )}
           </div>
 
-          {showCategoryCards && <CategoryCards categories={ALL_CATEGORIES} onSelect={setFilter} />}
+          {showCategoryCards && <CategoryCards categories={ALL_CATEGORIES} onEnroll={openEnrollForCategory} />}
 
           {!showCategoryCards && (
             <div className="crs-results-info">

@@ -239,7 +239,7 @@ const Home = () => {
             <CategoryCards
               categories={categories}
               limit={4}
-              onSelect={(key) => { goToCourses(); navigate(`/courses?category=${key}`); }}
+              onEnroll={(key) => { goToCourses(); navigate(`/courses?enroll=${key}`); }}
             />
           )}
           <div className="text-center mt-5 reveal" ref={addToRefs}>
