@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { API_URL, apiConfig } from "../../Api";
+import { API_URL, publicConfig } from "../../Api";
 import "./Header.css";
 import logo from "../../assets/image.png";
 
@@ -33,7 +33,7 @@ const Header = () => {
         setLoading(true);
 
         const response = await axios.get(`${API_URL}/website/categories/`, {
-          ...(apiConfig() || {}),
+          ...(publicConfig() || {}),
           signal: controller.signal,
         });
 
@@ -135,6 +135,7 @@ const Header = () => {
 
   return (
     <>
+      <div className="esv-sticky-wrap">
       {/* ===== TOP BAR ===== */}
       <div className="esv-top-bar">
         <div className="esv-container">
@@ -149,10 +150,6 @@ const Header = () => {
                 <span>eduskillvision@gmail.com</span>
               </a>
             </div>
-            <Link to="/verify-certificate" className="esv-verify-link">
-              <span>✅</span>
-              <span>Verify Certificate</span>
-            </Link>
           </div>
         </div>
       </div>
@@ -281,7 +278,7 @@ const Header = () => {
                   Login <span className={`esv-arrow ${isLoginOpen ? "esv-rotate" : ""}`}>▼</span>
                 </span>
                 {isLoginOpen && (
-                  <div className="esv-dropdown-menu">
+                  <div className="esv-dropdown-menu esv-right-dd">
                     <button
                       className="esv-dd-item"
                       onClick={() => handleDropdownClick("/login-admin")}
@@ -312,6 +309,7 @@ const Header = () => {
           </div>
         </div>
       </header>
+      </div>
 
       {/* MOBILE DRAWER + BACKDROP */}
       {isMenuOpen && <div className="esv-backdrop" onClick={closeMenu}></div>}

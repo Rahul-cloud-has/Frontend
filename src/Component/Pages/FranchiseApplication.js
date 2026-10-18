@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { API_URL, apiConfig } from '../../Api';
+import { API_URL, publicConfig } from '../../Api';
 import "./FranchiseApplication.css";
 
 const FranchiseApplication = () => {
@@ -63,7 +63,7 @@ const FranchiseApplication = () => {
       const response = await axios.post(
         `${API_URL}/applications/`,
         apiData,
-        apiConfig()
+        publicConfig()
       );
       
       // ============================================

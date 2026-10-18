@@ -561,7 +561,7 @@ const CreateUserModal = React.memo(({ filteredFranchises, dropdownSearch, setDro
                 <div className="fum-dropdown-list">
                   {filteredFranchises.map((f) => (
                     <div key={f.id} className="fum-dropdown-item" onClick={() => { onSelectFranchise(f); setIsDropdownOpen(false); }}>
-                      <strong>{f.franchiseName}</strong> ({f.franchiseCode})
+                      <strong>{f.franchiseName}</strong>{f.franchiseCode ? ` (${f.franchiseCode})` : ''}
                     </div>
                   ))}
                 </div>
@@ -573,7 +573,7 @@ const CreateUserModal = React.memo(({ filteredFranchises, dropdownSearch, setDro
             <div className="fum-form-grid">
               <div className="fum-form-group">
                 <label>Franchise Code</label>
-                <input type="text" value={selectedFranchise.franchiseCode} readOnly className="fum-readonly" />
+                <input type="text" value={selectedFranchise.franchiseCode || ""} placeholder="Auto-generated on create" readOnly className="fum-readonly" />
               </div>
               <div className="fum-form-group">
                 <label>Franchise Name</label>

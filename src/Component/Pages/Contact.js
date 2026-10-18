@@ -13,7 +13,7 @@ import {
   FaClock,
   FaBuilding,
 } from "react-icons/fa";
-import { API_URL, apiConfig } from "../../Api";
+import { API_URL, publicConfig } from "../../Api";
 import "./Contact.css";
 
 const Contact = () => {
@@ -82,7 +82,7 @@ const Contact = () => {
     };
 
     try {
-      await axios.post(`${API_URL}/contact/`, contactData, apiConfig());
+      await axios.post(`${API_URL}/contact/`, contactData, publicConfig());
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
       toast.update(loadingToast, { render: "Message sent successfully! We'll get back to you soon.", type: "success", isLoading: false, autoClose: 3500 });
     } catch (apiError) {

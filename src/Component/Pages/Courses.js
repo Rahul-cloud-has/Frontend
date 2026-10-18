@@ -2,8 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { API_URL, apiConfig } from "../../Api";
+import { API_URL, publicConfig } from "../../Api";
 import "./Courses.css";
+import imgCake from "../../assets/categories/cake.jpg";
+import imgComputer from "../../assets/categories/computer.jpg";
+import imgElectrician from "../../assets/categories/electrician.jpg";
+import imgMehandi from "../../assets/categories/mehandi.jpg";
+import imgTailoring from "../../assets/categories/tailoring.jpg";
+import imgAccounting from "../../assets/categories/accounting.jpg";
+import imgPlumbing from "../../assets/categories/plumbing.jpg";
+import imgBeautician from "../../assets/categories/beautician.jpg";
 
 const WEBSITE_URL = `${API_URL}/website`;
 
@@ -45,20 +53,24 @@ const TESTIMONIALS = [
   { quote:"Best decision of my life! Trainers are amazing and the curriculum is completely industry-focused and top-notch.", name:"Amit Kumar", course:"Professional Training", img:"https://randomuser.me/api/portraits/men/45.jpg" },
 ];
 
-const FALLBACK_CATEGORIES = [
-  { id: "it-computer", label: "IT & Computer", icon: "💻",
-    courses: [
-      { id: 1, name: "Full Stack Web Development", duration: "6 Months", students: "2,500+", fee: "₹49,999", description: "MERN stack, HTML, CSS, JavaScript, React, Node.js.", image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=400&fit=crop", isProfessional: true },
-      { id: 2, name: "Python & Data Science", duration: "5 Months", students: "1,800+", fee: "₹44,999", description: "Python, Pandas, NumPy, Machine Learning.", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop", isProfessional: true },
-      { id: 3, name: "DCA", duration: "6 Months", students: "5,200+", fee: "₹12,999", description: "MS Office, Internet, Email, Typing.", image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop", isProfessional: false },
-    ],
-  },
-  { id: "accounting", label: "Accounting & Finance", icon: "💰",
-    courses: [
-      { id: 4, name: "Tally Prime with GST", duration: "3 Months", students: "4,500+", fee: "₹14,999", description: "Tally Prime, GST filing, TDS.", image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop", isProfessional: false },
-    ],
-  },
+// The 8 course categories the client wants on the public site. API categories are
+// merged into a card by label keyword, so renamed/misspelled duplicates
+// (e.g. "CAKE MAKING & BAKING COURCE") still land on the right card.
+const CATEGORY_CARDS = [
+  { key: "cake", label: "CAKE MAKING & BAKING COURSE", icon: "🎂", keywords: ["cake", "bak"], image: imgCake },
+  { key: "electrician", label: "ELECTRICIAN CERTIFICATE COURSE", icon: "⚡", keywords: ["electric"], image: imgElectrician },
+  { key: "mehandi", label: "MEHANDI DESIGNING COURSE", icon: "🖐️", keywords: ["mehandi", "mehndi", "henna"], image: imgMehandi },
+  { key: "tally", label: "TALLY & ACCOUNTING COURSE CERTIFICATE", icon: "📒", keywords: ["tally", "account"], image: imgAccounting },
+  { key: "plumbing", label: "PLUMBERING CERTIFICATE COURSE", icon: "🔧", keywords: ["plumb"], image: imgPlumbing },
+  { key: "beautician", label: "BEAUTICIAN CERTIFICATE COURSES", icon: "💄", keywords: ["beauti"], image: imgBeautician },
+  { key: "tailoring", label: "TAILORING & DRESS DESIGNING COURSE", icon: "🧵", keywords: ["tailor", "dress"], image: imgTailoring },
+  { key: "computer", label: "COMPUTER COURSE CERTIFICATE", icon: "💻", keywords: ["comput", "program"], image: imgComputer },
 ];
+
+const findCardKey = (label = "") => {
+  const text = String(label).toLowerCase();
+  return CATEGORY_CARDS.find((card) => card.keywords.some((k) => text.includes(k)))?.key;
+};
 
 const HERO_SLIDES = [
   { id:1, image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop" },
@@ -101,7 +113,7 @@ const Courses = () => {
         if (!isMounted) return;
         setApiLoading(true);
         setApiError("");
-        const config = { ...(apiConfig() || {}), signal: controller.signal };
+        const config = { ...(publicConfig() || {}), signal: controller.signal };
         const [catRes, corRes, durRes] = await Promise.all([
           axios.get(`${WEBSITE_URL}/categories/`, config),
           axios.get(`${WEBSITE_URL}/courses/`, config),
@@ -114,8 +126,8 @@ const Courses = () => {
       } catch (err) {
         if (err?.name === "CanceledError" || err?.code === "ERR_CANCELED") return;
         if (!isMounted) return;
-        setApiError("Could not load courses from server. Showing sample data.");
-        toast.error("Could not load courses. Showing sample data.", { toastId: "cs-err" });
+        setApiError("Could not load course details from the server. Please refresh to try again.");
+        toast.error("Could not load courses. Please refresh.", { toastId: "cs-err" });
       } finally {
         if (isMounted) setApiLoading(false);
       }
@@ -130,12 +142,15 @@ const Courses = () => {
     const params = new URLSearchParams(location.search);
     const categoryFromURL = params.get("category");
     if (categoryFromURL) {
-      setFilter(categoryFromURL);
+      // Header links use the API category id; map it to its card key.
+      const apiCat = apiCategories.find((cat) => String(cat.id) === categoryFromURL);
+      const cardKey = findCardKey(apiCat?.label) || (CATEGORY_CARDS.some((c) => c.key === categoryFromURL) ? categoryFromURL : "all");
+      setFilter(cardKey);
       setTimeout(() => {
         document.querySelector(".crs-explore-section")?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 400);
     }
-  }, [location.search, apiLoading]);
+  }, [location.search, apiLoading, apiCategories]);
 
   useEffect(() => () => { document.body.style.overflow = ""; }, []);
 
@@ -144,28 +159,33 @@ const Courses = () => {
     return d ? d.value : durId || "—";
   };
 
-  const ALL_CATEGORIES = (() => {
-    if (apiCategories.length > 0) {
-      return apiCategories.map((cat) => ({
-        ...cat,
-        courses: apiCourses
-          .filter((c) => String(c.category) === String(cat.id))
-          .map((c) => ({
-            ...c,
-            icon: cat.icon,
-            duration: getDurLabel(c.duration),
-            students: c.students || "N/A",
-            fee: c.fee ? `₹${Number(c.fee).toLocaleString("en-IN")}` : "—",
-            isProfessional: c.is_professional || false,
-            categoryLabel: cat.label,
-            categoryIcon: cat.icon,
-            image: c.image || "",
-            description: c.description || "",
-          })),
-      }));
-    }
-    return FALLBACK_CATEGORIES;
-  })();
+  // Always the 8 client categories; API categories/courses are merged in by label keyword.
+  const ALL_CATEGORIES = CATEGORY_CARDS.map((card) => {
+    const apiCatIds = apiCategories
+      .filter((cat) => findCardKey(cat.label) === card.key)
+      .map((cat) => String(cat.id));
+    return {
+      id: card.key,
+      label: card.label,
+      icon: card.icon,
+      image: card.image,
+      apiCatIds,
+      courses: apiCourses
+        .filter((c) => apiCatIds.includes(String(c.category)))
+        .map((c) => ({
+          ...c,
+          icon: card.icon,
+          duration: getDurLabel(c.duration),
+          students: c.students || "N/A",
+          fee: c.fee ? `₹${Number(c.fee).toLocaleString("en-IN")}` : "—",
+          isProfessional: c.is_professional || false,
+          categoryLabel: card.label,
+          categoryIcon: card.icon,
+          image: c.image || "",
+          description: c.description || "",
+        })),
+    };
+  });
 
   const ALL_COURSES_LIST = ALL_CATEGORIES.flatMap((cat) =>
     cat.courses.map((c) => ({ ...c, category: cat.id, categoryLabel: cat.label, categoryIcon: cat.icon }))
@@ -180,6 +200,8 @@ const Courses = () => {
       String(course.categoryLabel || "").toLowerCase().includes(term);
     return mf && ms;
   });
+
+  const showCategoryCards = filter === "all" && !searchTerm && !apiLoading;
 
   const activeCat = ALL_CATEGORIES.find((c) => String(c.id) === String(filter));
 
@@ -200,7 +222,7 @@ const Courses = () => {
     }, { threshold: 0.1 });
     document.querySelectorAll(".crs-reveal").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [apiLoading, filteredCourses.length]);
+  }, [apiLoading, filteredCourses.length, showCategoryCards, filter]);
 
   const openEnroll = (course) => {
     const catId = course ? course.category : "";
@@ -249,7 +271,7 @@ const Courses = () => {
     try {
       setEnrollState("loading"); setEnrollError("");
       const payload = { student_name: studentName, course_name: courseName, mobile, email: enrollForm.email || "", city: enrollForm.city || "", state: enrollForm.state || "", status: "new" };
-      await axios.post(`${WEBSITE_URL}/enquiries/`, payload, apiConfig());
+      await axios.post(`${WEBSITE_URL}/enquiries/`, payload, publicConfig());
       setEnrollState("done");
       toast.update(loadingToastId, { render: "Enrollment successful! Our team will contact you.", type: "success", isLoading: false, autoClose: 3500 });
     } catch (err) {
@@ -325,8 +347,8 @@ const Courses = () => {
         <div className="crs-container">
           <div className="crs-heading crs-reveal">
             <span className="crs-tag">Explore Programs</span>
-            <h2>Browse Our <span className="crs-gold-text">Course Catalog</span></h2>
-            <p>Filter by category or search directly to find the course that fits your ambition.</p>
+            <h2>Choose Your <span className="crs-gold-text">Course Category</span></h2>
+            <p>Pick a category to see its programs, or search directly to find the course that fits your ambition.</p>
           </div>
 
           {/* SEARCH BAR */}
@@ -344,35 +366,45 @@ const Courses = () => {
             )}
           </div>
 
-          {/* Dynamic Filter Tabs (From API) */}
-          <div className="crs-filter-tabs crs-reveal">
-            <button
-              className={`crs-tab ${filter === "all" ? "active" : ""}`}
-              onClick={() => setFilter("all")}
-            >
-              <span>📚</span> All Courses
-              <span className="crs-count">{ALL_COURSES_LIST.length}</span>
-            </button>
-            {ALL_CATEGORIES.map((cat) => (
-              <button
-                key={cat.id}
-                className={`crs-tab ${String(filter) === String(cat.id) ? "active" : ""}`}
-                onClick={() => setFilter(cat.id)}
-              >
-                <span>{cat.icon || "📘"}</span> {cat.label}
-                <span className="crs-count">{cat.courses.length}</span>
-              </button>
-            ))}
-          </div>
+          {showCategoryCards && (
+            <div className="crs-cat-grid">
+              {ALL_CATEGORIES.map((cat, idx) => {
+                const img = cat.image;
+                return (
+                  <button
+                    type="button"
+                    key={cat.id}
+                    className="crs-cat-card crs-reveal"
+                    style={{ transitionDelay: `${(idx % 4) * 0.08}s` }}
+                    onClick={() => setFilter(cat.id)}
+                  >
+                    <div className="crs-cat-img" style={!img ? { background: cat.gradient || undefined } : undefined}>
+                      {img ? (
+                        <img src={img} alt={cat.label} loading="lazy" />
+                      ) : (
+                        <span className="crs-cat-fallback-icon">{cat.icon || "📘"}</span>
+                      )}
+                    </div>
+                    <div className="crs-cat-info">
+                      <h3>{cat.label}</h3>
+                      <span>{cat.courses.length > 0 ? `${cat.courses.length} ${cat.courses.length === 1 ? "Program" : "Programs"} →` : "Coming soon"}</span>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
-          <div className="crs-results-info">
-            Showing <strong>{filteredCourses.length}</strong> of {ALL_COURSES_LIST.length} courses
-            {searchTerm && <> for "<strong className="crs-gold-text">{searchTerm}</strong>"</>}
-          </div>
+          {!showCategoryCards && (
+            <div className="crs-results-info">
+              Showing <strong>{filteredCourses.length}</strong> of {ALL_COURSES_LIST.length} courses
+              {searchTerm && <> for "<strong className="crs-gold-text">{searchTerm}</strong>"</>}
+            </div>
+          )}
 
           {/* COURSES GRID */}
           <div ref={sectionRef}>
-            {apiLoading ? (
+            {showCategoryCards && !apiLoading ? null : apiLoading ? (
               <div className="crs-loading">
                 <div className="crs-spinner"></div>
                 <p>Loading courses from server...</p>
@@ -388,7 +420,7 @@ const Courses = () => {
                         <p>{activeCat.courses.length} Programs Available</p>
                       </div>
                     </div>
-                    <button onClick={() => setFilter("all")}>✕ Show All</button>
+                    <button onClick={() => setFilter("all")}>← Back to Categories</button>
                   </div>
                 )}
 
@@ -430,9 +462,9 @@ const Courses = () => {
                   ) : (
                     <div className="crs-no-courses">
                       <span>🔍</span>
-                      <h3>No courses found</h3>
-                      <p>Try different keywords or explore other categories.</p>
-                      <button onClick={() => { setFilter("all"); setSearchTerm(""); }}>View All Courses</button>
+                      <h3>{activeCat && !searchTerm ? "Courses coming soon" : "No courses found"}</h3>
+                      <p>{activeCat && !searchTerm ? "We are adding programs to this category. Please check back shortly." : "Try different keywords or explore other categories."}</p>
+                      <button onClick={() => { setFilter("all"); setSearchTerm(""); }}>Back to Categories</button>
                     </div>
                   )}
                 </div>

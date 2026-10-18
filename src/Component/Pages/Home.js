@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { API_URL, apiConfig } from "../../Api";
+import { API_URL, publicConfig } from "../../Api";
 import "./Home.css";
+import heroComputer from "../../assets/categories/computer.jpg";
+import heroTally from "../../assets/hero/tally.jpg";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -36,7 +38,7 @@ const Home = () => {
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
+      image: heroComputer,
       title: "Information Technology",
       subtitle: "Learn cutting-edge IT skills",
       desc: "Master Web Development, Python, Data Science, AI & ML",
@@ -44,7 +46,7 @@ const Home = () => {
     },
     {
       id: 2,
-      image: "https://images.pexels.com/photos/6863174/pexels-photo-6863174.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop",
+      image: heroTally,
       title: "Tally & Accounting",
       subtitle: "Become a finance expert",
       desc: "Master Tally Prime, GST, Income Tax & Financial Accounting",
@@ -92,9 +94,9 @@ const Home = () => {
     setLoading(true);
     try {
       const [coursesRes, catsRes, dursRes] = await Promise.all([
-        axios.get(`${API_URL}/website/courses/`, apiConfig()),
-        axios.get(`${API_URL}/website/categories/`, apiConfig()).catch(() => ({ data: [] })),
-        axios.get(`${API_URL}/website/durations/`, apiConfig()).catch(() => ({ data: [] })),
+        axios.get(`${API_URL}/website/courses/`, publicConfig()),
+        axios.get(`${API_URL}/website/categories/`, publicConfig()).catch(() => ({ data: [] })),
+        axios.get(`${API_URL}/website/durations/`, publicConfig()).catch(() => ({ data: [] })),
       ]);
 
       let data = coursesRes.data?.data || (Array.isArray(coursesRes.data) ? coursesRes.data : []);
@@ -144,7 +146,7 @@ const Home = () => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
           if (entry.target.classList.contains("stats-grid")) {
-            const counters = entry.target.querySelectorAll(".stat-number");
+            const counters = entry.target.querySelectorAll(".home-stat-number");
             counters.forEach(counter => {
               if (counter.classList.contains("counted")) return;
               counter.classList.add("counted");
@@ -206,12 +208,12 @@ const Home = () => {
           <div className="stats-grid reveal" ref={statsRef}>
             {stats.map((stat, index) => (
               <div key={index} className="pro-stat-card">
-                <div className="stat-icon">{stat.icon}</div>
-                <div className="stat-value-box">
-                  <span className="stat-number" data-target={stat.value}>0</span>
-                  <span className="stat-suffix">{stat.suffix}</span>
+                <div className="home-stat-icon">{stat.icon}</div>
+                <div className="home-stat-value-box">
+                  <span className="home-stat-number" data-target={stat.value}>0</span>
+                  <span className="home-stat-suffix">{stat.suffix}</span>
                 </div>
-                <p className="stat-label">{stat.label}</p>
+                <p className="home-stat-label">{stat.label}</p>
               </div>
             ))}
           </div>

@@ -3,8 +3,8 @@
    ============================================ */
 
 html, body, #root {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow-x: clip;
+  overflow-y: visible;
   height: auto;
   min-height: 100vh;
   -webkit-overflow-scrolling: touch;

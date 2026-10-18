@@ -75,36 +75,19 @@
   align-items: center;
 }
 
-.esv-verify-link {
-  color: var(--esv-navy);
-  text-decoration: none;
-  background: linear-gradient(135deg, var(--esv-gold), var(--esv-gold-light));
-  padding: 5px 16px;
-  border-radius: 20px;
-  font-weight: 700;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
-  font-size: 12px;
-  white-space: nowrap;
-  transition: all 0.3s;
-}
-
-.esv-verify-link:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-}
-
 /* ========================================
    MAIN HEADER
    ======================================== */
-.esv-header {
-  background: #fff;
-  box-shadow: 0 2px 20px rgba(26, 42, 94, 0.15);
+.esv-sticky-wrap {
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+.esv-header {
+  background: #fff;
+  box-shadow: 0 2px 20px rgba(26, 42, 94, 0.15);
+  position: relative;
   border-bottom: 3px solid var(--esv-gold);
 }
 
@@ -755,14 +738,7 @@
     white-space: nowrap !important;
   }
 
-  .esv-verify-link {
-    font-size: 10px !important;
-    padding: 3px 10px !important;
-    gap: 3px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .esv-icon {
+.esv-icon {
     font-size: 10px !important;
   }
 
@@ -804,12 +780,7 @@
     gap: 3px !important;
   }
 
-  .esv-verify-link {
-    font-size: 10px !important;
-    padding: 3px 9px !important;
-  }
-
-  .esv-logo { gap: 12px; }
+.esv-logo { gap: 12px; }
   .esv-logo-img-wrapper { width: 42px; height: 42px; }
   .esv-logo-text h1 { font-size: 16px; }
   .esv-logo-text p { font-size: 7.5px; }
@@ -838,16 +809,7 @@
     font-size: 10px !important;
   }
 
-  .esv-verify-link {
-    font-size: 9.5px !important;
-    padding: 2.5px 8px !important;
-  }
-
-  .esv-verify-link .esv-icon {
-    display: none !important;
-  }
-
-  .esv-logo { gap: 10px; }
+.esv-logo { gap: 10px; }
   .esv-logo-img-wrapper { width: 38px; height: 38px; }
   .esv-logo-text h1 { font-size: 15px; }
   .esv-logo-text p { font-size: 7px; }
@@ -875,12 +837,7 @@
     font-size: 9.5px !important;
   }
 
-  .esv-verify-link {
-    font-size: 9px !important;
-    padding: 2px 7px !important;
-  }
-
-  .esv-logo { gap: 9px; }
+.esv-logo { gap: 9px; }
   .esv-logo-img-wrapper { width: 34px; height: 34px; }
   .esv-logo-text h1 { font-size: 13px; }
   .esv-logo-text p { font-size: 6.5px; }
@@ -910,13 +867,7 @@
     gap: 2px !important;
   }
 
-  .esv-verify-link {
-    font-size: 8.5px !important;
-    padding: 2px 6px !important;
-    gap: 2px !important;
-  }
-
-  .esv-icon {
+.esv-icon {
     font-size: 9px !important;
   }
 

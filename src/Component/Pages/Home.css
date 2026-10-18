@@ -21,6 +21,7 @@
   color: var(--text-white);
   font-family: 'Inter', sans-serif;
   position: relative;
+  overflow-x: clip;
 }
 
 /* Added extra padding bottom so CTA doesn't stick to Footer */
@@ -95,7 +96,8 @@
 
 .pro-bg-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.05); transition: transform 5s linear; }
 .pro-slide.active .pro-bg-img { transform: scale(1); }
-.pro-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,17,40,0.6), var(--navy-bg)); }
+.pro-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.12) 45%, rgba(0,0,0,0.12) 70%, var(--navy-bg) 100%); }
+.pro-hero-content h1, .pro-hero-content h3, .pro-hero-content p { text-shadow: 0 2px 14px rgba(0,0,0,0.65); }
 
 .pro-hero-content {
   position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -121,10 +123,10 @@
   transition: all 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 .pro-stat-card:hover { transform: translateY(-10px); border-color: var(--border-hover); box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow); }
-.stat-icon { font-size: 30px; margin-bottom: 8px; }
-.stat-value-box { color: var(--gold); font-size: 32px; font-weight: 900; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; }
-.stat-number, .stat-suffix { color: var(--gold); font-weight: 900; }
-.stat-label { color: var(--text-gray); font-size: 12px; font-weight: 600; text-transform: uppercase; margin: 0;}
+.home-stat-icon { font-size: 30px; margin-bottom: 8px; }
+.home-stat-value-box { color: var(--gold); font-size: 32px; font-weight: 900; margin-bottom: 5px; display: flex; justify-content: center; align-items: center; }
+.home-stat-number, .home-stat-suffix { color: var(--gold); font-weight: 900; }
+.home-stat-label { color: var(--text-gray); font-size: 12px; font-weight: 600; text-transform: uppercase; margin: 0;}
 
 /* ====================================================
    LEARNING PATH

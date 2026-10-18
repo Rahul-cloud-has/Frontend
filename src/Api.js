@@ -26,6 +26,16 @@ export const apiConfig = () => {
   };
 };
 
+// Public website endpoints must NOT carry a token: an expired/stale
+// access_token in localStorage makes DRF's JWTAuthentication return 401
+// even for AllowAny views.
+export const publicConfig = () => ({
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
+});
+
 // ============================================
 // GET
 // ============================================
@@ -107,6 +117,7 @@ export const deleteData = async (endpoint) => {
 const api = {
   API_URL,
   apiConfig,
+  publicConfig,
   getData,
   postData,
   putData,
