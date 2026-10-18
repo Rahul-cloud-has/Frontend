@@ -1,6 +1,6 @@
 // Home.js - FINAL MASTERPIECE (Fixed Overlaps, Smooth Scrolling, Premium UI)
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -8,12 +8,15 @@ import { API_URL, publicConfig } from "../../Api";
 import "./Home.css";
 import heroComputer from "../../assets/categories/computer.jpg";
 import heroTally from "../../assets/hero/tally.jpg";
+import CategoryCards from "./CategoryCards";
+import { buildCategories } from "./categoryData";
 
 const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
-  const [courses, setCourses] = useState([]);
+  const [categories, setCategories] = useState(() => buildCategories([], [], () => ""));
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   
   const statsRef = useRef(null);
   const revealRefs = useRef([]);
@@ -24,15 +27,6 @@ const Home = () => {
     if (el && !revealRefs.current.includes(el)) {
       revealRefs.current.push(el);
     }
-  };
-
-  const getCourseImage = (imgSrc) => {
-    if (!imgSrc || imgSrc === "null" || imgSrc === "undefined") {
-      return "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop";
-    }
-    if (imgSrc.startsWith("http://") || imgSrc.startsWith("https://")) return imgSrc;
-    const backendHost = API_URL.replace(/\/api\/?$/, "");
-    return `${backendHost}${imgSrc.startsWith("/") ? "" : "/"}${imgSrc}`;
   };
 
   const heroSlides = [
@@ -93,41 +87,15 @@ const Home = () => {
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const [coursesRes, catsRes, dursRes] = await Promise.all([
+      const [coursesRes, catsRes] = await Promise.all([
         axios.get(`${API_URL}/website/courses/`, publicConfig()),
-        axios.get(`${API_URL}/website/categories/`, publicConfig()).catch(() => ({ data: [] })),
-        axios.get(`${API_URL}/website/durations/`, publicConfig()).catch(() => ({ data: [] })),
+        axios.get(`${API_URL}/website/categories/`, publicConfig()),
       ]);
-
-      let data = coursesRes.data?.data || (Array.isArray(coursesRes.data) ? coursesRes.data : []);
-      const categories = Array.isArray(catsRes.data) ? catsRes.data : [];
-      const durations = Array.isArray(dursRes.data) ? dursRes.data : [];
-
-      const getCategoryName = (catId) => {
-        if (typeof catId === "object" && catId !== null) return catId.name || catId.label || "IT & COMPUTER";
-        const found = categories.find((c) => String(c.id) === String(catId));
-        return found ? found.label || found.name : "IT & COMPUTER";
-      };
-
-      const getDurationValue = (durId) => {
-        if (typeof durId === "object" && durId !== null) return durId.name || durId.value || "1 Year";
-        const found = durations.find((d) => String(d.id) === String(durId));
-        return found ? found.value || found.name : "1 Year";
-      };
-
-      const mappedCourses = data.map((course) => ({
-        id: course.id,
-        name: course.course_name || course.name || "Unnamed Course",
-        image: course.image || course.image_url || "",
-        category: getCategoryName(course.category),
-        duration: getDurationValue(course.duration || course.sessions),
-        students: course.students || "150+",
-        description: course.description || "Premium professional training course for career growth.",
-        is_professional: course.is_professional !== false,
-      }));
-      setCourses(mappedCourses);
+      const apiCourses = coursesRes.data?.data || (Array.isArray(coursesRes.data) ? coursesRes.data : []);
+      const apiCategories = Array.isArray(catsRes.data) ? catsRes.data : [];
+      setCategories(buildCategories(apiCategories, apiCourses, () => ""));
     } catch (error) {
-      toast.error("Failed to load courses from server.");
+      toast.error("Failed to load courses from server.", { toastId: "home-courses-err" });
     } finally {
       setLoading(false);
     }
@@ -172,11 +140,14 @@ const Home = () => {
     revealRefs.current.forEach((el) => { if (el) observer.observe(el); });
     if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();
-  }, [courses]);
+  }, [categories]);
 
-  const displayCourses = searchTerm
-    ? courses.filter((c) => c.name.toLowerCase().includes(searchTerm.toLowerCase()) || c.category.toLowerCase().includes(searchTerm.toLowerCase()))
-    : courses;
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const term = searchTerm.trim();
+    goToCourses();
+    navigate(term ? `/courses?search=${encodeURIComponent(term)}` : "/courses");
+  };
 
   return (
     <div className="home-premium-master">
@@ -245,54 +216,34 @@ const Home = () => {
         <div className="container">
           <div className="pro-heading text-center reveal" ref={addToRefs}>
             <span className="pro-tag">Popular Programs</span>
-            <h2>Our Top <span className="gold-text">Courses</span></h2>
+            <h2>Popular Course <span className="gold-text">Categories</span></h2>
             <p>Industry-aligned curriculum designed by experts.</p>
           </div>
 
-          <div className="pro-search reveal" ref={addToRefs}>
+          <form className="pro-search reveal" ref={addToRefs} onSubmit={handleSearch}>
             <span>🔍</span>
-            <input 
-              type="text" 
-              placeholder="Search courses (e.g., Python, Tally)..." 
+            <input
+              type="text"
+              placeholder="Search courses (e.g., Tally, Tailoring)..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
-          </div>
+          </form>
 
           {loading ? (
             <div className="text-center mt-5">
               <div className="spinner"></div>
+              <p className="home-loading-note">Loading courses... the first visit can take up to a minute while the server wakes up.</p>
             </div>
           ) : (
-            <div className="courses-grid-exact">
-              {displayCourses.slice(0, 6).map((course, idx) => (
-                <div key={course.id} className="pro-course-card reveal" ref={addToRefs} style={{transitionDelay: `${(idx % 3) * 0.1}s`}}>
-                  <div className="card-image">
-                    <img src={getCourseImage(course.image)} alt={course.name} />
-                    <div className="badges">
-                      {course.is_professional && <span className="badge-pro">⭐ PRO</span>}
-                      <span className="badge-cat">{course.category}</span>
-                    </div>
-                  </div>
-                  <div className="card-content">
-                    <h3 title={course.name}>{course.name}</h3>
-                    <p>{course.description}</p>
-                    <div className="card-meta">
-                      <span>⏱️ {course.duration}</span>
-                      <span>👥 {course.students}</span>
-                    </div>
-                    <div className="card-footer">
-                      <Link to="/courses" onClick={goToCourses} className="btn-enroll">
-                        Enroll Now →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <CategoryCards
+              categories={categories}
+              limit={4}
+              onSelect={(key) => { goToCourses(); navigate(`/courses?category=${key}`); }}
+            />
           )}
           <div className="text-center mt-5 reveal" ref={addToRefs}>
-            <Link to="/courses" onClick={goToCourses} className="pro-btn-glass outline">View All Programs →</Link>
+            <Link to="/courses" onClick={goToCourses} className="pro-btn-glass outline">View More Programs →</Link>
           </div>
         </div>
       </section>

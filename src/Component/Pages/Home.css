@@ -308,3 +308,15 @@
   .cta-box { padding: 40px 20px; }
   .cta-box h2 { font-size: 24px; }
 }
+
+/* Layout wrapper: Home markup uses a bare .container that no stylesheet defined,
+   so every section ran edge to edge. The hero text block keeps its own layout. */
+.home-premium-master .container:not(.pro-hero-content) {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+.home-loading-note { margin-top: 14px; color: var(--text-gray); font-size: 13px; }

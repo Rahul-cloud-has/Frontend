@@ -4,14 +4,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { API_URL, publicConfig } from "../../Api";
 import "./Courses.css";
-import imgCake from "../../assets/categories/cake.jpg";
-import imgComputer from "../../assets/categories/computer.jpg";
-import imgElectrician from "../../assets/categories/electrician.jpg";
-import imgMehandi from "../../assets/categories/mehandi.jpg";
-import imgTailoring from "../../assets/categories/tailoring.jpg";
-import imgAccounting from "../../assets/categories/accounting.jpg";
-import imgPlumbing from "../../assets/categories/plumbing.jpg";
-import imgBeautician from "../../assets/categories/beautician.jpg";
+import CategoryCards from "./CategoryCards";
+import { CATEGORY_CARDS, findCardKey, buildCategories } from "./categoryData";
 
 const WEBSITE_URL = `${API_URL}/website`;
 
@@ -52,25 +46,6 @@ const TESTIMONIALS = [
   { quote:"Practical training and placement support helped me land my dream job at a great salary package. Highly recommended!", name:"Priya Patel", course:"Tally & Accounting", img:"https://randomuser.me/api/portraits/women/44.jpg" },
   { quote:"Best decision of my life! Trainers are amazing and the curriculum is completely industry-focused and top-notch.", name:"Amit Kumar", course:"Professional Training", img:"https://randomuser.me/api/portraits/men/45.jpg" },
 ];
-
-// The 8 course categories the client wants on the public site. API categories are
-// merged into a card by label keyword, so renamed/misspelled duplicates
-// (e.g. "CAKE MAKING & BAKING COURCE") still land on the right card.
-const CATEGORY_CARDS = [
-  { key: "cake", label: "CAKE MAKING & BAKING COURSE", icon: "🎂", keywords: ["cake", "bak"], image: imgCake },
-  { key: "electrician", label: "ELECTRICIAN CERTIFICATE COURSE", icon: "⚡", keywords: ["electric"], image: imgElectrician },
-  { key: "mehandi", label: "MEHANDI DESIGNING COURSE", icon: "🖐️", keywords: ["mehandi", "mehndi", "henna"], image: imgMehandi },
-  { key: "tally", label: "TALLY & ACCOUNTING COURSE CERTIFICATE", icon: "📒", keywords: ["tally", "account"], image: imgAccounting },
-  { key: "plumbing", label: "PLUMBERING CERTIFICATE COURSE", icon: "🔧", keywords: ["plumb"], image: imgPlumbing },
-  { key: "beautician", label: "BEAUTICIAN CERTIFICATE COURSES", icon: "💄", keywords: ["beauti"], image: imgBeautician },
-  { key: "tailoring", label: "TAILORING & DRESS DESIGNING COURSE", icon: "🧵", keywords: ["tailor", "dress"], image: imgTailoring },
-  { key: "computer", label: "COMPUTER COURSE CERTIFICATE", icon: "💻", keywords: ["comput", "program"], image: imgComputer },
-];
-
-const findCardKey = (label = "") => {
-  const text = String(label).toLowerCase();
-  return CATEGORY_CARDS.find((card) => card.keywords.some((k) => text.includes(k)))?.key;
-};
 
 const HERO_SLIDES = [
   { id:1, image:"https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1920&h=1080&fit=crop" },
@@ -140,6 +115,8 @@ const Courses = () => {
   useEffect(() => {
     if (apiLoading) return;
     const params = new URLSearchParams(location.search);
+    const searchFromURL = params.get("search");
+    if (searchFromURL) setSearchTerm(searchFromURL);
     const categoryFromURL = params.get("category");
     if (categoryFromURL) {
       // Header links use the API category id; map it to its card key.
@@ -159,36 +136,10 @@ const Courses = () => {
     return d ? d.value : durId || "—";
   };
 
-  // Always the 8 client categories; API categories/courses are merged in by label keyword.
-  const ALL_CATEGORIES = CATEGORY_CARDS.map((card) => {
-    const apiCatIds = apiCategories
-      .filter((cat) => findCardKey(cat.label) === card.key)
-      .map((cat) => String(cat.id));
-    return {
-      id: card.key,
-      label: card.label,
-      icon: card.icon,
-      image: card.image,
-      apiCatIds,
-      courses: apiCourses
-        .filter((c) => apiCatIds.includes(String(c.category)))
-        .map((c) => ({
-          ...c,
-          icon: card.icon,
-          duration: getDurLabel(c.duration),
-          students: c.students || "N/A",
-          fee: c.fee ? `₹${Number(c.fee).toLocaleString("en-IN")}` : "—",
-          isProfessional: c.is_professional || false,
-          categoryLabel: card.label,
-          categoryIcon: card.icon,
-          image: c.image || "",
-          description: c.description || "",
-        })),
-    };
-  });
+  const ALL_CATEGORIES = buildCategories(apiCategories, apiCourses, getDurLabel);
 
   const ALL_COURSES_LIST = ALL_CATEGORIES.flatMap((cat) =>
-    cat.courses.map((c) => ({ ...c, category: cat.id, categoryLabel: cat.label, categoryIcon: cat.icon }))
+    cat.courses.map((c) => ({ ...c, category: cat.id, categoryLabel: cat.label, categoryIcon: cat.icon, categoryImage: cat.image }))
   );
 
   const filteredCourses = ALL_COURSES_LIST.filter((course) => {
@@ -366,34 +317,7 @@ const Courses = () => {
             )}
           </div>
 
-          {showCategoryCards && (
-            <div className="crs-cat-grid">
-              {ALL_CATEGORIES.map((cat, idx) => {
-                const img = cat.image;
-                return (
-                  <button
-                    type="button"
-                    key={cat.id}
-                    className="crs-cat-card crs-reveal"
-                    style={{ transitionDelay: `${(idx % 4) * 0.08}s` }}
-                    onClick={() => setFilter(cat.id)}
-                  >
-                    <div className="crs-cat-img" style={!img ? { background: cat.gradient || undefined } : undefined}>
-                      {img ? (
-                        <img src={img} alt={cat.label} loading="lazy" />
-                      ) : (
-                        <span className="crs-cat-fallback-icon">{cat.icon || "📘"}</span>
-                      )}
-                    </div>
-                    <div className="crs-cat-info">
-                      <h3>{cat.label}</h3>
-                      <span>{cat.courses.length > 0 ? `${cat.courses.length} ${cat.courses.length === 1 ? "Program" : "Programs"} →` : "Coming soon"}</span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          )}
+          {showCategoryCards && <CategoryCards categories={ALL_CATEGORIES} onSelect={setFilter} />}
 
           {!showCategoryCards && (
             <div className="crs-results-info">
@@ -407,7 +331,7 @@ const Courses = () => {
             {showCategoryCards && !apiLoading ? null : apiLoading ? (
               <div className="crs-loading">
                 <div className="crs-spinner"></div>
-                <p>Loading courses from server...</p>
+                <p>Loading courses from server... the first visit can take up to a minute while the server wakes up.</p>
               </div>
             ) : (
               <>
@@ -429,8 +353,8 @@ const Courses = () => {
                     filteredCourses.map((course, idx) => (
                       <div key={course.id} className="crs-course-card crs-reveal" style={{transitionDelay: `${(idx % 3) * 0.1}s`}}>
                         <div className="crs-card-img">
-                          {course.image ? (
-                            <img src={course.image} alt={course.name} loading="lazy" />
+                          {course.image || course.categoryImage ? (
+                            <img src={course.image || course.categoryImage} alt={course.name} loading="lazy" />
                           ) : (
                             <div className="crs-img-placeholder">{course.categoryIcon || "📚"}</div>
                           )}
