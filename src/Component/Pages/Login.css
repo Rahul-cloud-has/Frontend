@@ -297,21 +297,6 @@
   margin-bottom: 5px;
 }
 
-.login-developer {
-  font-size: 11px !important;
-}
-
-.developer-link {
-  color: var(--log-gold);
-  text-decoration: none;
-  font-weight: 700;
-  transition: 0.3s;
-}
-
-.developer-link:hover {
-  color: #fff;
-  text-shadow: 0 0 10px var(--log-gold);
-}
 
 /* ==========================================
    RESPONSIVE - ALL DEVICES (PERFECT CENTER)

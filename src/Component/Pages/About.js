@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./About.css";
 import Rahul from "../../assets/rahul.jpeg";
-import abcd from "../../assets/abcd.jpg";
 import ajaygupta from "../../assets/ajaygupta.jpeg"
 
 /* ─── Static Data ─── */
@@ -26,7 +25,6 @@ const VALUES = [
 const TEAM = [
   { name: "Ajay Gupta", role: "Founder & CEO", experience: "15+ Yrs", bio: "Visionary leader transforming skill education.", image: ajaygupta, social: { linkedin: "#", twitter: "#" } },
   { name: "Rahul Mishra", role: "Head of Education", experience: "12+ Yrs", bio: "Curriculum expert for innovative learning.", image: Rahul, social: { linkedin: "#", twitter: "#" } },
-  { name: "abc", role: "Technical Director", experience: "7+ Yrs", bio: "Tech innovator driving digital growth.", image:abcd, social: { linkedin: "#", twitter: "#" } },
   { name: "Neha Singh", role: "Placement Head", experience: "8+ Yrs", bio: "Career mentor connecting students to MNCs.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&h=500&fit=crop", social: { linkedin: "#", twitter: "#" } },
 ];
 

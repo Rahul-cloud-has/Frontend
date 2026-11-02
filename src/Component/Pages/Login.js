@@ -290,17 +290,6 @@ const Login = () => {
 
           <div className="login-footer">
             <p>© 2026 EduSkillVision. All rights reserved.</p>
-            <p className="login-developer">
-              Developed by{" "}
-              <a
-                href="https://dimensioninfotech.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="developer-link"
-              >
-                Dimension Infotech
-              </a>
-            </p>
           </div>
         </div>
       </div>

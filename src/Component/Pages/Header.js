@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { API_URL, publicConfig } from "../../Api";
+import { sortByCourseOrder } from "./categoryData";
 import "./Header.css";
 import logo from "../../assets/image.png";
 
@@ -40,7 +41,7 @@ const Header = () => {
         if (!isMounted) return;
 
         const data = Array.isArray(response.data) ? response.data : [];
-        setCategories(data);
+        setCategories(sortByCourseOrder(data));
       } catch (err) {
         if (err?.name === "CanceledError" || err?.code === "ERR_CANCELED") return;
         if (!isMounted) return;

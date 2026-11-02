@@ -26,6 +26,15 @@ export const findCardKey = (label = "") => {
   return CATEGORY_CARDS.find((card) => card.keywords.some((k) => text.includes(k)))?.key;
 };
 
+// Sorts API categories into the CATEGORY_CARDS sequence; unmatched ones go last.
+export const sortByCourseOrder = (cats = []) => {
+  const rank = (cat) => {
+    const i = CATEGORY_CARDS.findIndex((c) => c.key === findCardKey(cat.label));
+    return i === -1 ? CATEGORY_CARDS.length : i;
+  };
+  return [...cats].sort((a, b) => rank(a) - rank(b));
+};
+
 // Always returns the 8 client categories, each with the API courses that belong to it.
 export const buildCategories = (apiCategories, apiCourses, getDurLabel) =>
   CATEGORY_CARDS.map((card) => {
