@@ -269,7 +269,7 @@
 .abt-val-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 10px; color: #fff; }
 .abt-val-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin: 0; }
 
-.abt-team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.abt-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; }
 .abt-team-card { background: var(--nav-card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: 0.4s; }
 .abt-team-card:hover { transform: translateY(-8px); border-color: var(--border-hov); box-shadow: 0 15px 30px rgba(0,0,0,0.5); }
 .tm-img { position: relative; height: 260px; overflow: hidden; }
@@ -337,6 +337,7 @@
   .tl-item.left .tl-year { right: 25px; left: auto; }
   
   .abt-team-grid { grid-template-columns: repeat(2, 1fr); }
+  .abt-team-card:last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 10px); }
   .abt-hide-mobile { display: none; }
 }
 
@@ -359,6 +360,7 @@
   .fa-bens { grid-template-columns: 1fr; }
   .abt-values-grid { grid-template-columns: 1fr; }
   .abt-team-grid { grid-template-columns: 1fr; }
+  .abt-team-card:last-child:nth-child(odd) { width: auto; justify-self: stretch; }
   
   .abt-cta-box { padding: 40px 20px; }
   .abt-cta-box h2 { font-size: 28px; }
