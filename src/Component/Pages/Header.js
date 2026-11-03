@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { API_URL, publicConfig } from "../../Api";
-import { sortByCourseOrder } from "./categoryData";
+import { CATEGORY_CARDS } from "./categoryData";
 import "./Header.css";
 import logo from "../../assets/image.png";
 
@@ -15,57 +12,9 @@ const Header = () => {
   const [isMobileCoursesOpen, setIsMobileCoursesOpen] = useState(false);
   const [isMobileFranchiseOpen, setIsMobileFranchiseOpen] = useState(false);
   const [isMobileLoginOpen, setIsMobileLoginOpen] = useState(false);
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   const location = useLocation();
   const navigate = useNavigate();
-
-  // ============================================
-  // 📤 FETCH CATEGORIES FROM API WITH TOASTIFY
-  // ============================================
-  useEffect(() => {
-    let isMounted = true;
-    const controller = new AbortController();
-
-    const fetchCategories = async () => {
-      try {
-        if (!isMounted) return;
-        setLoading(true);
-
-        const response = await axios.get(`${API_URL}/website/categories/`, {
-          ...(publicConfig() || {}),
-          signal: controller.signal,
-        });
-
-        if (!isMounted) return;
-
-        const data = Array.isArray(response.data) ? response.data : [];
-        setCategories(sortByCourseOrder(data));
-      } catch (err) {
-        if (err?.name === "CanceledError" || err?.code === "ERR_CANCELED") return;
-        if (!isMounted) return;
-
-        setCategories([]);
-        // Display elegant Toast instead of blocking console.errors
-        toast.error("Failed to load course categories. Please refresh or try again later.", {
-          toastId: "header-cat-error",
-          autoClose: 4000,
-        });
-      } finally {
-        if (isMounted) {
-          setLoading(false);
-        }
-      }
-    };
-
-    fetchCategories();
-
-    return () => {
-      isMounted = false;
-      controller.abort();
-    };
-  }, []);
 
   // ============================================
   // 🔄 CLOSE ALL ON ROUTE CHANGE
@@ -210,21 +159,15 @@ const Header = () => {
                       📚 All Courses
                     </button>
 
-                    {loading ? (
-                      <div className="esv-dd-item" style={{ color: "#94a3b8", cursor: "default" }}>
-                        Loading...
-                      </div>
-                    ) : (
-                      categories.map((cat) => (
-                        <button
-                          key={cat.id}
-                          className="esv-dd-item"
-                          onClick={() => navigateToCourses(cat.id)}
-                        >
-                          {cat.icon} {cat.label}
-                        </button>
-                      ))
-                    )}
+                    {CATEGORY_CARDS.map((cat) => (
+                      <button
+                        key={cat.key}
+                        className="esv-dd-item"
+                        onClick={() => navigateToCourses(cat.key)}
+                      >
+                        📚 {cat.label}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>
@@ -367,28 +310,22 @@ const Header = () => {
                 📚 All Courses
               </button>
 
-              {loading ? (
-                <div className="esv-accordion-sub" style={{ color: "#94a3b8" }}>
-                  Loading...
-                </div>
-              ) : (
-                categories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    className="esv-accordion-sub"
-                    onClick={() => navigateToCourses(cat.id)}
-                    style={{
-                      width: "100%",
-                      textAlign: "left",
-                      border: "none",
-                      background: "transparent",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {cat.icon} {cat.label}
-                  </button>
-                ))
-              )}
+              {CATEGORY_CARDS.map((cat) => (
+                <button
+                  key={cat.key}
+                  className="esv-accordion-sub"
+                  onClick={() => navigateToCourses(cat.key)}
+                  style={{
+                    width: "100%",
+                    textAlign: "left",
+                    border: "none",
+                    background: "transparent",
+                    cursor: "pointer",
+                  }}
+                >
+                  📚 {cat.label}
+                </button>
+              ))}
             </div>
           </div>
 

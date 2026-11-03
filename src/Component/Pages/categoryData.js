@@ -13,26 +13,17 @@ import imgBeautician from "../../assets/categories/beautician.jpg";
 export const CATEGORY_CARDS = [
   { key: "cake", label: "CAKE MAKING & BAKING COURSE", icon: "🎂", keywords: ["cake", "bak"], image: imgCake },
   { key: "electrician", label: "ELECTRICIAN CERTIFICATE COURSE", icon: "⚡", keywords: ["electric"], image: imgElectrician },
-  { key: "mehandi", label: "MEHANDI DESIGNING COURSE", icon: "🖐️", keywords: ["mehandi", "mehndi", "henna"], image: imgMehandi },
-  { key: "tally", label: "TALLY & ACCOUNTING COURSE CERTIFICATE", icon: "📒", keywords: ["tally", "account"], image: imgAccounting },
-  { key: "plumbing", label: "PLUMBERING CERTIFICATE COURSE", icon: "🔧", keywords: ["plumb"], image: imgPlumbing },
-  { key: "beautician", label: "BEAUTICIAN CERTIFICATE COURSES", icon: "💄", keywords: ["beauti"], image: imgBeautician },
+  { key: "mehandi", label: "MEHENDI DESIGNING COURSE", icon: "🖐️", keywords: ["mehandi", "mehendi", "mehndi", "henna"], image: imgMehandi },
+  { key: "tally", label: "TALLY & ACCOUNTING CERTIFICATE COURSE", icon: "📒", keywords: ["tally", "account"], image: imgAccounting },
+  { key: "plumbing", label: "PLUMBING CERTIFICATE COURSE", icon: "🔧", keywords: ["plumb"], image: imgPlumbing },
+  { key: "beautician", label: "COMPLETE BEAUTY & SALON CERTIFICATE COURSE", icon: "💄", keywords: ["beauti", "salon", "parlour", "parlor"], image: imgBeautician },
   { key: "tailoring", label: "TAILORING & DRESS DESIGNING COURSE", icon: "🧵", keywords: ["tailor", "dress"], image: imgTailoring },
-  { key: "computer", label: "COMPUTER COURSE CERTIFICATE", icon: "💻", keywords: ["comput", "program"], image: imgComputer },
+  { key: "computer", label: "COMPUTER CERTIFICATE COURSE", icon: "💻", keywords: ["comput", "program"], image: imgComputer },
 ];
 
 export const findCardKey = (label = "") => {
   const text = String(label).toLowerCase();
   return CATEGORY_CARDS.find((card) => card.keywords.some((k) => text.includes(k)))?.key;
-};
-
-// Sorts API categories into the CATEGORY_CARDS sequence; unmatched ones go last.
-export const sortByCourseOrder = (cats = []) => {
-  const rank = (cat) => {
-    const i = CATEGORY_CARDS.findIndex((c) => c.key === findCardKey(cat.label));
-    return i === -1 ? CATEGORY_CARDS.length : i;
-  };
-  return [...cats].sort((a, b) => rank(a) - rank(b));
 };
 
 // Always returns the 8 client categories, each with the API courses that belong to it.
