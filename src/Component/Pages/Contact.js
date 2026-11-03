@@ -111,9 +111,9 @@ const Contact = () => {
   ];
 
   const branches = [
-    { name: "Ambikapur (Head Office)", address: "Ambikapur, Surguja, Chhattisgarh - 497001", phone: "+91 84630 65317" },
-    { name: "Delhi", address: "Connaught Place, New Delhi - 110001", phone: "+91 84630 65317" },
-    { name: "Raipur", address: "Civil Lines, Raipur, Chhattisgarh - 492001", phone: "+91 84630 65317" },
+    { name: "Ambikapur (Head Office)", address: "Ambikapur, Surguja, Chhattisgarh - 497001" },
+    { name: "Delhi", address: "Connaught Place, New Delhi - 110001" },
+    { name: "Raipur", address: "Civil Lines, Raipur, Chhattisgarh - 492001" },
   ];
 
   const faqs = [
@@ -252,9 +252,6 @@ const Contact = () => {
                 <div className="cnt-branch-icon"><FaBuilding /></div>
                 <h3>{b.name}</h3>
                 <p>{b.address}</p>
-                <a href={`tel:${b.phone.replace(/\s/g, "")}`} className="cnt-branch-phone">
-                  <FaPhoneAlt /> {b.phone}
-                </a>
               </div>
             ))}
           </div>
