@@ -1,0 +1,9 @@
+/* TEMPORARY: forces the whole frontend to a white theme.
+   To revert: delete this file and remove its import from index.js. */
+html, body, #root, *, *::before, *::after {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #111111 !important;
+  text-shadow: none !important;
+}
+img, video, canvas, svg { background: transparent !important; }
