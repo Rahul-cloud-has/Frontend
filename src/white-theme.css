@@ -1,9 +1,17 @@
-/* TEMPORARY: forces the whole frontend to a white theme.
+/* TEMPORARY: blanks the whole site except a notice.
    To revert: delete this file and remove its import from index.js. */
-html, body, #root, *, *::before, *::after {
-  background-color: #ffffff !important;
-  background-image: none !important;
-  color: #111111 !important;
-  text-shadow: none !important;
+html, body { background: #ffffff !important; margin: 0; height: 100%; }
+#root { display: none !important; }
+body::before {
+  content: "kindly complete the pending payment of developer to re access the website";
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  background: #ffffff;
+  color: #111111;
+  font: 20px/1.4 sans-serif;
 }
-img, video, canvas, svg { background: transparent !important; }
